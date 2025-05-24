@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.navigator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.nav-left, .nav-right, .nav-center {
+    flex: 1;
+    text-align: center;
+}
+
+.nav-center {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.weight-btn {
+    padding: 5px 10px;
+}
+
+.main-wrapper {
+    display: flex;
+    height: calc(100vh - 60px);
+}
+
+.left-sidebar, .right-sidebar {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.calendar-container {
+    flex: 10;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.link-btn {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* 모달 */
+.modal {
+    position: fixed;
+    top: 30%;
+    left: 40%;
+    width: 300px;
+    background: white;
+    border: 2px solid black;
+    padding: 15px;
+    z-index: 100;
+}
+
+.modal-content .close-btn {
+    float: right;
+    cursor: pointer;
+    font-weight: bold;
+}

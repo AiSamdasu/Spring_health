@@ -1,0 +1,60 @@
+/* 달력 틀  */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: 60px repeat(7, 1fr) 100px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+/* 월화수목금토일 + 주별칼로리 */
+.calendar-header {
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid black;
+    padding: 5px;
+}
+/* 1주,2주 ... 표시  */
+.week-label {
+    background-color: #ffe100;
+    text-align: center;
+    border: 1px solid black;
+    padding: 5px;
+}
+/* 날짜칸 */
+.day-cell {
+    background-color: #d0e3ff;
+    border: 1px solid black;
+    height: 60px;
+    position: relative;
+    padding: 5px;
+}
+
+.day-cell button {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    font-size: 10px;
+}
+
+/* 텍스트 작성시 칸 */
+.cell-text {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 5px;
+    color: #333;
+}
+/* 주별칼로리 */
+.week-total {
+    background-color: #ff8c32;
+    border: 1px solid black;
+    text-align: center;
+}
+/* 한달 칼로리 총합  */
+.month-total {
+    background-color: #4177f6;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    margin-top: 5px;
+    border: 1px solid black;
+    text-align: center;
+}
