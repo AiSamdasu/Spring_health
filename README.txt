@@ -37,6 +37,12 @@ Spring_Caw_Ktk/
 2. **MySQL 설정**
    - MySQL 8.0 이상이 설치되어 있어야 하며, 아래 명령어를 MySQL 콘솔에서 실행:
 
+3. **자바 버전**
+   - 자바 21 버전을 사용할것
+
+4. **스프링 버전**
+   - 스프링 2.7을 사용할것
+
 ```sql
 CREATE DATABASE SpringUnivDB CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 CREATE USER 'KTKCAW'@'localhost' IDENTIFIED BY '1234';
