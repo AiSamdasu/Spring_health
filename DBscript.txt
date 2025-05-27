@@ -1,0 +1,44 @@
+<----- DB 생성 ----->
+
+CREATE DATABASE spring_univ_project_db;
+USE spring_univ_project_db;
+
+CREATE TABLE food_list (
+                           id INT AUTO_INCREMENT PRIMARY KEY,
+                           food_name VARCHAR(100),
+                           calories INT
+);
+
+GRANT ALL PRIVILEGES ON spring_univ_project_db.* TO 'KTKCAW'@'localhost';
+FLUSH PRIVILEGES;
+SHOW GRANTS FOR 'KTKCAW'@'localhost';
+USE spring_univ_project_db;
+SELECT 1;
+
+
+
+
+
+<----- table 생성 ----->
+
+
+
+
+<----- Data 생성 ----->
+
+INSERT INTO food_list (food_name, calories) VALUES ('김치', 30);
+INSERT INTO food_list (food_name, calories) VALUES ('된장국', 80);
+INSERT INTO food_list (food_name, calories) VALUES ('계란찜', 90);
+INSERT INTO food_list (food_name, calories) VALUES ('밥', 300);
+INSERT INTO food_list (food_name, calories) VALUES ('삼겹살', 500);
+INSERT INTO food_list (food_name, calories) VALUES ('닭가슴살', 120);
+INSERT INTO food_list (food_name, calories) VALUES ('사과', 52);
+INSERT INTO food_list (food_name, calories) VALUES ('바나나', 89);
+INSERT INTO food_list (food_name, calories) VALUES ('고구마', 110);
+INSERT INTO food_list (food_name, calories) VALUES ('아보카도', 160);
+
+SELECT * FROM food_list;
+
+
+
+

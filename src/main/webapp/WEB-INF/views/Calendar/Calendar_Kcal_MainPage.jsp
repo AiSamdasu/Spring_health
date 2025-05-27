@@ -71,16 +71,35 @@
     // 모달 닫기
     $('.close-btn').click(() => $('#entryModal').hide());
 
-    // 저장 버튼 클릭 시 AJAX 전송
+    // 저장 버튼 클릭 시 fetch 전송
     $('#saveBtn').click(function () {
         const day = $('#modalDay').val();
         const text = $('#modalText').val();
-        $.post('/saveEntry', { day, text }, () => {
-            currentCell.find('.cell-text').text(text);
-            $('#entryModal').hide();
-        });
+
+        fetch('/saveEntry', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({ day, text })
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('서버 오류 발생');
+                }
+                return response.text(); // 또는 .json() - 서버 응답 형식에 따라
+            })
+            .then(() => {
+                currentCell.find('.cell-text').text(text);
+                $('#entryModal').hide();
+            })
+            .catch(error => {
+                console.error('저장 중 오류:', error);
+                alert('저장 실패');
+            });
     });
 </script>
+
 
 </body>
 </html>
