@@ -4,10 +4,11 @@ CREATE DATABASE spring_univ_project_db;
 USE spring_univ_project_db;
 
 CREATE TABLE food_list (
-                           id INT AUTO_INCREMENT PRIMARY KEY,
-                           food_name VARCHAR(100),
-                           calories INT
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    food_name VARCHAR(100) NOT NULL UNIQUE,
+    calories INT NOT NULL
 );
+
 
 GRANT ALL PRIVILEGES ON spring_univ_project_db.* TO 'KTKCAW'@'localhost';
 FLUSH PRIVILEGES;
@@ -36,6 +37,28 @@ INSERT INTO food_list (food_name, calories) VALUES ('사과', 52);
 INSERT INTO food_list (food_name, calories) VALUES ('바나나', 89);
 INSERT INTO food_list (food_name, calories) VALUES ('고구마', 110);
 INSERT INTO food_list (food_name, calories) VALUES ('아보카도', 160);
+
+INSERT INTO food_list (food_name, calories) VALUES ('양념닭갈비', 230);
+INSERT INTO food_list (food_name, calories) VALUES ('소금닭갈비', 210);
+INSERT INTO food_list (food_name, calories) VALUES ('떡볶이', 350);
+INSERT INTO food_list (food_name, calories) VALUES ('순대', 290);
+INSERT INTO food_list (food_name, calories) VALUES ('오징어볶음', 190);
+INSERT INTO food_list (food_name, calories) VALUES ('김치찌개', 180);
+INSERT INTO food_list (food_name, calories) VALUES ('된장찌개', 160);
+INSERT INTO food_list (food_name, calories) VALUES ('계란말이', 120);
+INSERT INTO food_list (food_name, calories) VALUES ('닭볶음탕', 250);
+INSERT INTO food_list (food_name, calories) VALUES ('잡채', 200);
+INSERT INTO food_list (food_name, calories) VALUES ('갈비찜', 520);
+INSERT INTO food_list (food_name, calories) VALUES ('비빔밥', 550);
+INSERT INTO food_list (food_name, calories) VALUES ('콩나물국밥', 400);
+INSERT INTO food_list (food_name, calories) VALUES ('제육볶음', 480);
+INSERT INTO food_list (food_name, calories) VALUES ('돈까스', 600);
+INSERT INTO food_list (food_name, calories) VALUES ('샐러드(닭가슴살)', 180);
+INSERT INTO food_list (food_name, calories) VALUES ('카레라이스', 540);
+INSERT INTO food_list (food_name, calories) VALUES ('불고기', 350);
+INSERT INTO food_list (food_name, calories) VALUES ('청국장', 200);
+INSERT INTO food_list (food_name, calories) VALUES ('새우볶음밥', 450);
+
 
 SELECT * FROM food_list;
 
