@@ -10,23 +10,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FoodRepository {
-    // DB 연결 객체 생성
-    private Connection conn = DBUtil.getConnection();
 
-    // 검색 명을 포함한 모든 음식 검색
+    // 음식 이름으로 부분 검색 (LIKE 사용)
     public List<Food> searchFoodByName(String keyword) {
         List<Food> list = new ArrayList<>();
         String sql = "SELECT * FROM food_list WHERE food_name LIKE ?";
-        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+
+        try (
+                Connection conn = DBUtil.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql)
+        ) {
             ps.setString(1, "%" + keyword + "%");
             ResultSet rs = ps.executeQuery();
+
             while (rs.next()) {
-                list.add(new Food(rs.getInt("id"), rs.getString("food_name"), rs.getInt("calories")));
+                int id = rs.getInt("id");
+                String foodName = rs.getString("food_name");
+                int calories = rs.getInt("calories");
+                list.add(new Food(id, foodName, calories));
             }
+
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace(); // 로깅 도구 사용 권장
         }
+
         return list;
     }
 }
-

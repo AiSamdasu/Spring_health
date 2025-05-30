@@ -5,11 +5,20 @@ import org.example.spring_caw_ktk.dto.Food;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class FoodController {
-    // 음식 이름으로 검색 (AJAX 요청에 응답)
+
+    // 음식 검색 페이지 반환
+    @GetMapping("/searchFoodPage")
+    public String searchFoodPage() {
+        return "SearchFood/SearchFood_Process";
+    }
+
+    // AJAX 요청을 받아 음식 검색 결과를 반환
     @GetMapping("/searchFood")
     @ResponseBody
     public List<Food> searchFood(@RequestParam("keyword") String keyword) {
@@ -17,18 +26,23 @@ public class FoodController {
         return repo.searchFoodByName(keyword);
     }
 
-    // 특정 날짜에 음식 저장 (예: 사용자가 캘린더에서 선택한 날짜에 음식 선택)
-    @PostMapping("/saveFoodToDate")
+    @PostMapping("/submitFoodSelection")
     @ResponseBody
-    public String saveFoodToDate(@RequestParam("day") String day, @RequestParam("foodId") int foodId) {
-        // 여기에 DB 저장 로직 구현 필요 (예: 캘린더 날짜별 저장 테이블)
-        System.out.println("저장 요청: 날짜 = " + day + ", 음식 ID = " + foodId);
-        return "success";
-    }
+    public String submitFoodSelection(@RequestParam("foodName") String foodName,
+                                      @RequestParam("calories") int calories,
+                                      HttpSession session) {
+        // 이름 목록
+        List<String> foodNames = (List<String>) session.getAttribute("selectedFoodNames");
+        if (foodNames == null) foodNames = new ArrayList<>();
+        foodNames.add(foodName);
+        session.setAttribute("selectedFoodNames", foodNames);
 
-    // 캘린더 메인 페이지로 이동 (GET)
-    @GetMapping("/calendar")
-    public String showCalendarPage() {
-        return "Calendar/Calendar_Kcal_MainPage"; // JSP 경로 기준
+        // 칼로리 목록
+        List<Integer> caloriesList = (List<Integer>) session.getAttribute("selectedCaloriesList");
+        if (caloriesList == null) caloriesList = new ArrayList<>();
+        caloriesList.add(calories);
+        session.setAttribute("selectedCaloriesList", caloriesList);
+
+        return "redirect:/MainPage";  // GET 요청으로 리다이렉트
     }
 }
