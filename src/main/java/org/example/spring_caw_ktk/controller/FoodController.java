@@ -18,7 +18,7 @@ public class FoodController {
         return "SearchFood/SearchFood_Process";
     }
 
-    // AJAX 요청을 받아 음식 검색 결과를 반환
+    // AJAX 요청을 받아 DB에서 음식 검색 결과를 반환
     @GetMapping("/searchFood")
     @ResponseBody
     public List<Food> searchFood(@RequestParam("keyword") String keyword) {

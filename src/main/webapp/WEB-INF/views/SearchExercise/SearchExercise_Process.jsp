@@ -1,21 +1,27 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
+SearchExercise
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>음식 검색</title>
+    <title>운동 검색</title>
     <%@ include file="../bootstrap/bootstrap.jsp" %>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Food_css/SearchFood.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Exercise_css/SearchExercise.css">
 
 
 </head>
+
+
 <body>
 <h2>음식 칼로리 검색</h2>
 <!-- 동적으로 경로 지정  -->
 <form action="${pageContext.request.contextPath}/Test" method="get">
     검색 완료 -> <button type="submit">Test01로 이동</button>
 </form>
+
+<!-- 이 부분부터 이어서 -->
 <div class="inner_box">
     <button id="searchAllBtn" class="SearchAllbtn">모든 음식 검색</button>
     <div class="search-part-row">
@@ -35,6 +41,6 @@
 </div>
 
 
-<script src="${pageContext.request.contextPath}/js/Food/SearchFood.js"></script>
+<script src="${pageContext.request.contextPath}/js/Exercise/SearchExercise.js"></script>
 </body>
 </html>
