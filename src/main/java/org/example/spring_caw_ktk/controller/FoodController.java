@@ -3,6 +3,7 @@ package org.example.spring_caw_ktk.controller;
 import org.example.spring_caw_ktk.dao.FoodRepository;
 import org.example.spring_caw_ktk.dto.Food;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -44,5 +45,13 @@ public class FoodController {
         session.setAttribute("selectedCaloriesList", caloriesList);
 
         return "선택 완료";
+    }
+
+    @GetMapping("/showFoodDetail")
+    public String showFoodDetail(@RequestParam("foodName") String foodName, Model model) {
+        FoodRepository repo = new FoodRepository();
+        Food food = repo.findFoodByName(foodName);
+        model.addAttribute("food", food);
+        return "SearchFood/showFood";  // Show.jsp
     }
 }

@@ -6,13 +6,24 @@ public class Food {
     private String foodName;
     private int calories;
 
+    private int carbohydrate;
+    private int protein;
+    private int fat;
 
 
-    // 전체 필드 초기화하는 생성자
     public Food(int id, String foodName, int calories) {
         this.id = id;
         this.foodName = foodName;
         this.calories = calories;
+    }
+
+    public Food(int id, String foodName, int calories, int carbohydrate, int protein, int fat) {
+        this.id = id;
+        this.foodName = foodName;
+        this.calories = calories;
+        this.carbohydrate = carbohydrate;
+        this.protein = protein;
+        this.fat = fat;
     }
 
     public Food() {
@@ -43,12 +54,14 @@ public class Food {
         this.calories = calories;
     }
 
-    @Override
-    public String toString() {
-        return "Food{" +
-                "id=" + id +
-                ", foodName='" + foodName + '\'' +
-                ", calories=" + calories +
-                '}';
-    }
+    public int getCarbohydrate() { return carbohydrate; }
+    public void setCarbohydrate(int carbohydrate) { this.carbohydrate = carbohydrate; }
+
+    public int getProtein() { return protein; }
+    public void setProtein(int protein) { this.protein = protein; }
+
+    public int getFat() { return fat; }
+    public void setFat(int fat) { this.fat = fat; }
+
+
 }

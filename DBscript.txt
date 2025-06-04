@@ -81,3 +81,59 @@ INSERT INTO exercise_list (exercise_name, calories) VALUES ('농구', 310);
 INSERT INTO exercise_list (exercise_name, calories) VALUES ('스쿼트', 220);
 INSERT INTO exercise_list (exercise_name, calories) VALUES ('푸쉬업', 180);
 INSERT INTO exercise_list (exercise_name, calories) VALUES ('팔벌려뛰기', 150);
+
+ALTER TABLE food_list
+ADD COLUMN carbohydrate INT NOT NULL DEFAULT 0,
+ADD COLUMN protein INT NOT NULL DEFAULT 0,
+ADD COLUMN fat INT NOT NULL DEFAULT 0;
+
+UPDATE food_list SET carbohydrate = 1, protein = 2, fat = 0 WHERE food_name = '김치';
+UPDATE food_list SET carbohydrate = 5, protein = 6, fat = 3 WHERE food_name = '된장국';
+UPDATE food_list SET carbohydrate = 2, protein = 7, fat = 5 WHERE food_name = '계란찜';
+UPDATE food_list SET carbohydrate = 66, protein = 6, fat = 1 WHERE food_name = '밥';
+UPDATE food_list SET carbohydrate = 0, protein = 15, fat = 45 WHERE food_name = '삼겹살';
+UPDATE food_list SET carbohydrate = 0, protein = 23, fat = 2 WHERE food_name = '닭가슴살';
+UPDATE food_list SET carbohydrate = 14, protein = 0, fat = 0 WHERE food_name = '사과';
+UPDATE food_list SET carbohydrate = 23, protein = 1, fat = 0 WHERE food_name = '바나나';
+UPDATE food_list SET carbohydrate = 27, protein = 2, fat = 0 WHERE food_name = '고구마';
+UPDATE food_list SET carbohydrate = 9, protein = 2, fat = 15 WHERE food_name = '아보카도';
+
+UPDATE food_list SET carbohydrate = 15, protein = 20, fat = 10 WHERE food_name = '양념닭갈비';
+UPDATE food_list SET carbohydrate = 8, protein = 23, fat = 9 WHERE food_name = '소금닭갈비';
+UPDATE food_list SET carbohydrate = 65, protein = 7, fat = 5 WHERE food_name = '떡볶이';
+UPDATE food_list SET carbohydrate = 35, protein = 8, fat = 15 WHERE food_name = '순대';
+UPDATE food_list SET carbohydrate = 10, protein = 20, fat = 8 WHERE food_name = '오징어볶음';
+UPDATE food_list SET carbohydrate = 12, protein = 10, fat = 8 WHERE food_name = '김치찌개';
+UPDATE food_list SET carbohydrate = 10, protein = 12, fat = 6 WHERE food_name = '된장찌개';
+UPDATE food_list SET carbohydrate = 2, protein = 8, fat = 8 WHERE food_name = '계란말이';
+UPDATE food_list SET carbohydrate = 12, protein = 20, fat = 12 WHERE food_name = '닭볶음탕';
+UPDATE food_list SET carbohydrate = 30, protein = 10, fat = 8 WHERE food_name = '잡채';
+
+UPDATE food_list SET carbohydrate = 20, protein = 30, fat = 30 WHERE food_name = '갈비찜';
+UPDATE food_list SET carbohydrate = 70, protein = 20, fat = 15 WHERE food_name = '비빔밥';
+UPDATE food_list SET carbohydrate = 60, protein = 20, fat = 12 WHERE food_name = '콩나물국밥';
+UPDATE food_list SET carbohydrate = 25, protein = 25, fat = 20 WHERE food_name = '제육볶음';
+UPDATE food_list SET carbohydrate = 40, protein = 25, fat = 35 WHERE food_name = '돈까스';
+UPDATE food_list SET carbohydrate = 10, protein = 25, fat = 7 WHERE food_name = '샐러드(닭가슴살)';
+UPDATE food_list SET carbohydrate = 75, protein = 15, fat = 20 WHERE food_name = '카레라이스';
+UPDATE food_list SET carbohydrate = 15, protein = 25, fat = 20 WHERE food_name = '불고기';
+UPDATE food_list SET carbohydrate = 10, protein = 15, fat = 10 WHERE food_name = '청국장';
+UPDATE food_list SET carbohydrate = 60, protein = 20, fat = 15 WHERE food_name = '새우볶음밥';
+
+INSERT INTO food_list (food_name, calories, carbohydrate, protein, fat) VALUES ('라면', 450, 65, 10, 15);
+INSERT INTO food_list (food_name, calories, carbohydrate, protein, fat) VALUES ('치킨', 600, 10, 35, 40);
+INSERT INTO food_list (food_name, calories, carbohydrate, protein, fat) VALUES ('햄버거', 550, 45, 25, 30);
+INSERT INTO food_list (food_name, calories, carbohydrate, protein, fat) VALUES ('스파게티', 520, 75, 15, 12);
+INSERT INTO food_list (food_name, calories, carbohydrate, protein, fat) VALUES ('초밥', 400, 60, 20, 8);
+INSERT INTO food_list (food_name, calories, carbohydrate, protein, fat) VALUES ('참치김밥', 480, 70, 18, 10);
+
+CREATE TABLE user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    userid VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    nickname VARCHAR(100) NOT NULL UNIQUE,
+    name VARCHAR(50) NOT NULL ,
+    age INT,
+    gender VARCHAR(10),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

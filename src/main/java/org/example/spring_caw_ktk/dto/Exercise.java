@@ -38,13 +38,6 @@ public class Exercise {
         this.calories = calories;
     }
 
-    @Override
-    public String toString() {
-        return "Exercise{" +
-                "id=" + id +
-                ", exerciseName='" + exerciseName + '\'' +
-                ", calories=" + calories +
-                '}';
-    }
+
 
 }
