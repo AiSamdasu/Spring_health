@@ -49,9 +49,6 @@ INSERT INTO food_list (food_name, calories) VALUES ('청국장', 200);
 INSERT INTO food_list (food_name, calories) VALUES ('새우볶음밥', 450);
 
 
-SELECT * FROM food_list;
-//
-
 CREATE TABLE exercise_list (
                            id INT AUTO_INCREMENT PRIMARY KEY,
                            exercise_name VARCHAR(100),

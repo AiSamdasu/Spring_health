@@ -31,7 +31,7 @@ public class FoodRepository {
             }
 
         } catch (Exception e) {
-            e.printStackTrace(); // 로깅 도구 사용 권장
+            e.printStackTrace();
         }
 
         return list;
