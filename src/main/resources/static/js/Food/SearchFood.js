@@ -41,8 +41,9 @@ function displayFoodList(data) {
                     method: 'POST',
                     data: result_Food_Kcal,
                     success: function (response) {
-                        alert("서버에 전송 성공: " + response);
-                        closeResultModal(); // 성공 후 모달 닫기
+                        alert(response);
+                        closeResultModal();
+
                     },
                     error: function () {
                         alert("서버 전송 실패");

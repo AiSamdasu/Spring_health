@@ -16,17 +16,6 @@ SHOW GRANTS FOR 'KTKCAW'@'localhost';
 USE spring_univ_project_db;
 SELECT 1;
 
-
-
-
-
-<----- table 생성 ----->
-
-
-
-
-<----- Data 생성 ----->
-
 INSERT INTO food_list (food_name, calories) VALUES ('김치', 30);
 INSERT INTO food_list (food_name, calories) VALUES ('된장국', 80);
 INSERT INTO food_list (food_name, calories) VALUES ('계란찜', 90);
@@ -61,7 +50,34 @@ INSERT INTO food_list (food_name, calories) VALUES ('새우볶음밥', 450);
 
 
 SELECT * FROM food_list;
+//
+
+CREATE TABLE exercise_list (
+                           id INT AUTO_INCREMENT PRIMARY KEY,
+                           exercise_name VARCHAR(100),
+                           calories INT
+);
+
+ALTER TABLE exercise_list ADD CONSTRAINT unique_exercise_name UNIQUE (exercise_name);
 
 
-
-
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('걷기', 120);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('조깅', 240);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('달리기', 300);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('자전거 타기', 280);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('수영', 330);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('줄넘기', 350);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('계단 오르기', 260);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('요가', 130);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('필라테스', 140);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('에어로빅', 250);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('스피닝', 300);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('킥복싱', 370);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('줄다리기', 200);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('탁구', 160);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('테니스', 280);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('축구', 320);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('농구', 310);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('스쿼트', 220);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('푸쉬업', 180);
+INSERT INTO exercise_list (exercise_name, calories) VALUES ('팔벌려뛰기', 150);

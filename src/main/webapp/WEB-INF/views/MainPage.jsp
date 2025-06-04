@@ -7,33 +7,26 @@
     <title>메인 페이지</title>
 </head>
 
-<!--  음식 검색 받아오는 코드, 추후에 켈린더랑 연동  -->
-
-
 <body>
+<form action="${pageContext.request.contextPath}/Test" method="get">
+    <button type="submit">Test01로 이동</button>
+</form>
+
 <h2>선택된 음식 목록</h2>
 
 <%
-    List<String> names = (List<String>) session.getAttribute("selectedFoodNames");
-    List<Integer> cals = (List<Integer>) session.getAttribute("selectedCaloriesList");
+    Map<String, Integer> foodCountMap = (Map<String, Integer>) request.getAttribute("foodCountMap");
+    Map<String, Integer> foodTotalCalMap = (Map<String, Integer>) request.getAttribute("foodTotalCalMap");
 
-    if (names != null && cals != null && names.size() == cals.size()) {
-        Map<String, Integer> countMap = new HashMap<>();
-        Map<String, Integer> totalCalMap = new HashMap<>();
-
-        for (int i = 0; i < names.size(); i++) {
-            String name = names.get(i);
-            int cal = cals.get(i);
-
-            countMap.put(name, countMap.getOrDefault(name, 0) + 1);
-            totalCalMap.put(name, totalCalMap.getOrDefault(name, 0) + cal);
-        }
+    if (foodCountMap != null && !foodCountMap.isEmpty()) {
+        List<String> foodKeys = new ArrayList<>(foodCountMap.keySet());
 %>
 <ul>
     <%
-        for (String name : countMap.keySet()) {
-            int count = countMap.get(name);
-            int total = totalCalMap.get(name);
+        for (int i = 0; i < foodKeys.size(); i++) {
+            String name = foodKeys.get(i);
+            int count = foodCountMap.get(name);
+            int total = foodTotalCalMap.get(name);
     %>
     <li><%= name %> - <%= count %>개 - <%= total %> kcal</li>
     <%
@@ -48,12 +41,34 @@
     }
 %>
 
+<h2>운동 리스트</h2>
 
-<!--  운동 검색 받아오는 코드, 추후에 켈린더랑 연동  -->
+<%
+    Map<String, Integer> exerciseCountMap = (Map<String, Integer>) request.getAttribute("exerciseCountMap");
+    Map<String, Integer> exerciseTotalCalMap = (Map<String, Integer>) request.getAttribute("exerciseTotalCalMap");
 
-
-
-
+    if (exerciseCountMap != null && !exerciseCountMap.isEmpty()) {
+        List<String> exerciseKeys = new ArrayList<>(exerciseCountMap.keySet());
+%>
+<ul>
+    <%
+        for (int i = 0; i < exerciseKeys.size(); i++) {
+            String name = exerciseKeys.get(i);
+            int count = exerciseCountMap.get(name);
+            int total = exerciseTotalCalMap.get(name);
+    %>
+    <li><%= name %> - <%= count %>개 - <%= total %> kcal</li>
+    <%
+        }
+    %>
+</ul>
+<%
+} else {
+%>
+<p>선택된 운동이 없습니다.</p>
+<%
+    }
+%>
 
 </body>
 </html>

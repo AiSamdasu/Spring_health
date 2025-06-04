@@ -1,0 +1,147 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2%;
+    padding: 3%;
+    font-size: 1rem;
+}
+
+.inner_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    border: 0.3rem solid #ccc;
+    border-radius: 2rem;
+    margin: 2rem auto;
+    background-color: #f9f9f9;
+    box-shadow: 0 0.4rem 0.8rem rgba(150, 150, 150, 0.2);
+    width: 60%;
+    max-width: 600px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    width: 60%;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+.exercise-btn {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 0.2rem solid #bbb;
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.exercise-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: scale(1.01);
+}
+
+
+.SearchAllbtn {
+    color: #000;
+    border: none;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    width: 60%;
+    box-shadow: 0 0.4rem 0.6rem rgba(128, 128, 128, 0.6);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+.Searchbtn {
+    color: #000;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 20%;
+    box-shadow: 0 4px 6px rgba(128, 128, 128, 0.6);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.Searchbtn:hover,
+.SearchAllbtn:hover {
+    box-shadow: 0 0.6rem 1rem rgba(80, 80, 80, 0.9);
+    transform: translateY(-0.2rem);
+}
+
+.SearchAllbtn {
+    background-color: rgb(234, 91, 91);
+}
+
+.Searchbtn {
+    background-color: rgb(214, 193, 52);
+}
+
+.SearchTXT {
+    padding: 1rem;
+    border-radius: 2rem;
+    border: 0.15rem solid #ccc;
+    font-size: 1.1rem;
+    width: 60%;
+    outline: none;
+    box-shadow: 0 0.4rem 0.6rem rgba(128, 128, 128, 0.3);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.SearchTXT:focus {
+    box-shadow: 0 0.6rem 1rem rgba(80, 80, 80, 0.5);
+    border-color: #999;
+}
+.search-part-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem; /* 요소 간 간격 */
+    width: 100%;
+    justify-content: center;
+}
+
+/* 모달 배경 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* 모달 내용 */
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    width: 60%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* 닫기 버튼 */
+.close-btn {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}

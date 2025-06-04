@@ -43,6 +43,6 @@ public class FoodController {
         caloriesList.add(calories);
         session.setAttribute("selectedCaloriesList", caloriesList);
 
-        return "redirect:/MainPage";  // GET 요청으로 리다이렉트
+        return "선택 완료";
     }
 }
