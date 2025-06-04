@@ -11,7 +11,7 @@ import java.util.List;
 
 public class FoodRepository {
 
-    // 음식 이름으로 부분 검색 (LIKE 사용)
+    // 음식 이름으로 부분 검색
     public List<Food> searchFoodByName(String keyword) {
         List<Food> list = new ArrayList<>();
         String sql = "SELECT * FROM food_list WHERE food_name LIKE ?";
