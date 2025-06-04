@@ -22,5 +22,6 @@
     <button type="submit">searchExercisePage 이동</button>
 </form>
 
+
 </body>
 </html>
