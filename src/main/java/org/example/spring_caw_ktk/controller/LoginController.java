@@ -27,7 +27,6 @@ public class LoginController {
                         HttpSession session,
                         Model model) {
 
-        // ⚠ 로그인 로직 생략하고 테스트용 사용자 생성
         User user = new User();
         user.setId(1);
         user.setUserid("testuser");

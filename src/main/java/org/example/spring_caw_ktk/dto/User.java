@@ -12,7 +12,7 @@ public class User {
     private int age;
     private String gender;
     private Timestamp createdAt; // 가입일
-    private double bmi;        // 계산용 (선택사항)
+    private double bmi;
 
     public User() {}
 
