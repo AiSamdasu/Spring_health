@@ -10,16 +10,18 @@ public class Kcal {
     private String food_name;
     private int calories;
     private Timestamp created_at;
+    private String classify;
     
     public Kcal() {}
 
-    public Kcal(int id, String userid, Date date , String food_name,int calories,Timestamp created_at) {
+    public Kcal(int id, String userid, Date date , String food_name,int calories,Timestamp created_at,String classify) {
         this.id = id;
         this.userid = userid;
         this.date = date;
         this.food_name = food_name;
         this.calories=calories;
         this.created_at = created_at;
+        this.classify=classify;
     }
 
 	public int getId() {
@@ -68,6 +70,14 @@ public class Kcal {
 
 	public void setCreated_at(Timestamp created_at) {
 		this.created_at = created_at;
+	}
+
+	public String getClassify() {
+		return classify;
+	}
+
+	public void setClassify(String classify) {
+		this.classify = classify;
 	}
     
     

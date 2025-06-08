@@ -20,7 +20,7 @@
 		    <ul class="nav nav-pills flex-column mb-auto">
 				
 		      <li class="nav-item">
-		        <a href="#" class="nav-link text-white " aria-current="true">
+		        <a href="${pageContext.request.contextPath}/MainPage" class="nav-link text-white" aria-current="true"> 
 		          <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
 		            <use xlink:href="#home"></use>
 		          </svg>
@@ -28,22 +28,22 @@
 		        </a>
 		      </li>
 			  <li>
-			  	<a href="#" class="nav-link text-white">
-					<svg class="bi pe-none me-2" width="16" height="16" aria-hidden="page">
-			  	
+			  	<a href="${pageContext.request.contextPath}/calendar_kcal" class="nav-link active">
+			  	<svg class="bi pe-none me-2" width="16" height="16" aria-hidden="page">
 			  	<use xlink:href="#speedometer2"></use>
 			  	</svg>
 			  	Kcal
 			  	</a>
 			  </li>
-		      <li>
-		        <a href="#" class="nav-link active">
-		          <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
-		            <use xlink:href="#speedometer2"></use>
-		          </svg>
-		          BMI
-		        </a>
-		      </li>
+			  <li>
+			    <a href="${pageContext.request.contextPath}/calendar_bmi" class="nav-link text-white">
+			      <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
+			        <use xlink:href="#speedometer2"></use>
+			      </svg>
+			      BMI
+			    </a>
+			  </li>
+			  <li>
 		      <li>
 		        <a href="#" class="nav-link text-white">
 		          <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
@@ -112,7 +112,7 @@
 				events: [
 				  <c:forEach var="kcal" items="${kcalList}" varStatus="status">
 				  {
-				    title: 'food : ${kcal.food_name}| kcal : ${kcal.calories}',
+				    title: '${kcal.classify}| kcal : ${kcal.calories}',
 				    start: '${kcal.date}'
 				  }<c:if test="${!status.last}">,</c:if>
 				  </c:forEach>
@@ -137,12 +137,20 @@
 	  <!--모달 내용-->
       <div class="modal-body">
 		<form action="calendar_kcal" method="post">
-		  <div class="row mb-3">
-		    <label for="userid" class="col-sm-2 col-form-label">userid</label>
-		    <div class="col-sm-10">
-		      <input type="text" class="form-control" name="userid" id="userid" value="${sessionScope.loginMember.userid}" required>
-		    </div>
-		  </div>
+
+				
+				<div class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="classify" id="classify" value="아침">
+				<label class="form-check-label" for="inlineRadio1">아침</label>
+				</div>
+				<div class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="classify" id="classify" value="점심">
+				<label class="form-check-label" for="inlineRadio2">점심</label>
+				</div>
+				<div class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="classify" id="classify" value="저녁">
+				<label class="form-check-label" for="inlineRadio3">저녁</label>
+				</div><hr>
 
 		  <div class="row mb-3">
 		    <label for="food_name" class="col-sm-2 col-form-label">food_name</label>
@@ -158,8 +166,10 @@
 		    </div>
 		  </div>
 
-		  
-		      <input type="hidden" class="form-control" name="date" id="date">
+	      <input type="hidden" class="form-control" name="date" id="date">
+		  <input type="hidden" class="form-control" name="userid" id="userid" value="${sessionScope.loginMember.userid}" required>
+
+
 
 		  <div class="modal-footer">
 		    <button type="submit" class="btn btn-primary">저장</button>

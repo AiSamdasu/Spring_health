@@ -20,7 +20,7 @@
 		    <ul class="nav nav-pills flex-column mb-auto">
 				
 		      <li class="nav-item">
-		        <a href="#" class="nav-link text-white " aria-current="true">
+		        <a href="${pageContext.request.contextPath}/MainPage" class="nav-link text-white " aria-current="true">
 		          <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
 		            <use xlink:href="#home"></use>
 		          </svg>
@@ -28,7 +28,7 @@
 		        </a>
 		      </li>
 			  <li>
-			  	<a href="#" class="nav-link text-white">
+			  	<a href="${pageContext.request.contextPath}/calendar_kcal" class="nav-link text-white">
 			  	<svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
 			  	<use xlink:href="#speedometer2"></use>
 			  	</svg>
@@ -36,7 +36,7 @@
 			  	</a>
 			  </li>
 		      <li>
-		        <a href="#" class="nav-link active">
+		        <a href="${pageContext.request.contextPath}/calendar_bmi" class="nav-link active">
 		          <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="page">
 		            <use xlink:href="#speedometer2"></use>
 		          </svg>

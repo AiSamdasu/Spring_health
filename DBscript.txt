@@ -180,4 +180,19 @@ INSERT INTO user_bmi (userid, date, height_cm, weight_kg, bmi) VALUES ('kim01', 
 ('kim01', '2025-05-03', 110, 20, 30),
 ('lee02', '2025-05-03', 200, 20, 50)
 ;
+
+-- kcal 기록 테이블
+CREATE TABLE user_kcal (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    userid VARCHAR(50)  NOT NULL,
+    date DATE not null,
+	food_name VARCHAR(100) NOT NULL,
+    calories INT default NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    classify  VARCHAR(50)  NOT NULL,
+    FOREIGN KEY (userid) REFERENCES user(userid)
+);
+
+INSERT INTO user_kcal (userid, date, food_name, calories,classify) VALUES ('kim01', '2025-05-02', '김치',30,'아침');
+
                                                                 

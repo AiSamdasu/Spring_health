@@ -10,6 +10,7 @@ public class KcalRequest {
     private String food_name;
     private int calories;
     private Timestamp created_at;
+    private String classify;
 
 	public int getId() {
 		return id;
@@ -57,6 +58,14 @@ public class KcalRequest {
 
 	public void setCreated_at(Timestamp created_at) {
 		this.created_at = created_at;
+	}
+
+	public String getClassify() {
+		return classify;
+	}
+
+	public void setClassify(String classify) {
+		this.classify = classify;
 	}
     
     

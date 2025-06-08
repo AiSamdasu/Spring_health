@@ -28,7 +28,8 @@ public class KcalDao {
                 rs.getDate("date"),
                 rs.getString("food_name"),
                 rs.getInt("calories"),
-                rs.getTimestamp("created_at")
+                rs.getTimestamp("created_at"),
+                rs.getString("classify")
             )
         );
         return results;
@@ -43,7 +44,8 @@ public class KcalDao {
                     rs.getDate("date"),
                     rs.getString("food_name"),
                     rs.getInt("calories"),
-                    rs.getTimestamp("created_at")
+                    rs.getTimestamp("created_at"),
+                    rs.getString("classify")
             ),
             userid
         );
@@ -57,8 +59,8 @@ public class KcalDao {
         
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(
-                "INSERT INTO user_kcal (id, userid, date, food_name,calories,created_at) " +
-                "VALUES (?, ?, ?, ?, ?, ?)",
+                "INSERT INTO user_kcal (id, userid, date, food_name,calories,created_at,classify) " +
+                "VALUES (?, ?, ?, ?, ?, ?,?)",
                 Statement.RETURN_GENERATED_KEYS
             );
             ps.setInt(1, kcal.getId());
@@ -67,6 +69,7 @@ public class KcalDao {
             ps.setString(4, kcal.getFood_name());
             ps.setInt(5, kcal.getCalories());
             ps.setTimestamp(6, kcal.getCreated_at());
+            ps.setString(7,kcal.getClassify());
             return ps;
         }, keyHolder);
 

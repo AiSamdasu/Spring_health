@@ -36,7 +36,8 @@ public class KcalService {
 	        req.getDate(),
 	        req.getFood_name(),
 	        req.getCalories(),
-	        Timestamp.valueOf(LocalDateTime.now())
+	        Timestamp.valueOf(LocalDateTime.now()),
+	        req.getClassify()
 	    );
 	    kcalDao.insert(newkcal);
 
