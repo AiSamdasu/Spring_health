@@ -65,6 +65,12 @@
 <form action="${pageContext.request.contextPath}/calendar_kcal" method="get">
     <button type="submit">캘린더 보기  </button>
 </form>
+<form action="${pageContext.request.contextPath}/lis3" method="get">
+    <button type="submit">list3보기  </button>
+</form>
+<form action="${pageContext.request.contextPath}/calendar_exercise" method="get">
+    <button type="submit">캘린더 보기  </button>
+</form>
 
 <!-- User 정보 입력해서 DB저장 파트 -->
 <form action="${pageContext.request.contextPath}/inputKcal" method="get">

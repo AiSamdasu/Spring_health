@@ -16,6 +16,7 @@
 <form action="${pageContext.request.contextPath}/Test" method="get">
     검색 완료 -> <button type="submit">Test01로 이동</button>
 </form>
+
 <div class="inner_box">
     <button id="searchAllBtn" class="SearchAllbtn">모든 음식 검색</button>
     <div class="search-part-row">

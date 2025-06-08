@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <title>calendar_kcal</title>
+    <title>calendar_excercise</title>
 </head>
 
 <body> 
@@ -20,7 +20,7 @@
 		    <ul class="nav nav-pills flex-column mb-auto">
 				
 		      <li class="nav-item">
-		        <a href="${pageContext.request.contextPath}/MainPage" class="nav-link text-white" aria-current="true"> 
+		        <a href="${pageContext.request.contextPath}/MainPage" class="nav-link text-white " aria-current="true">
 		          <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
 		            <use xlink:href="#home"></use>
 		          </svg>
@@ -28,29 +28,29 @@
 		        </a>
 		      </li>
 			  <li>
-			  	<a href="${pageContext.request.contextPath}/calendar_kcal" class="nav-link active">
-			  	<svg class="bi pe-none me-2" width="16" height="16" aria-hidden="page">
+			  	<a href="${pageContext.request.contextPath}/calendar_kcal" class="nav-link text-white">
+			  	<svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
 			  	<use xlink:href="#speedometer2"></use>
 			  	</svg>
 			  	Kcal
 			  	</a>
 			  </li>
-			  <li>
-			    <a href="${pageContext.request.contextPath}/calendar_bmi" class="nav-link text-white">
-			      <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
-			        <use xlink:href="#speedometer2"></use>
-			      </svg>
-			      BMI
-			    </a>
-			  </li>
-			  <li>
-			    <a href="${pageContext.request.contextPath}/calendar_excercise" class="nav-link text-white">
-			      <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
-			        <use xlink:href="#table"></use>
-			      </svg>
-			      Exercise
-			    </a>
-			  </li>
+		      <li>
+		        <a href="${pageContext.request.contextPath}/calendar_bmi" class="nav-link text-white">
+		          <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
+		            <use xlink:href="#speedometer2"></use>
+		          </svg>
+		          BMI
+		        </a>
+		      </li>
+		      <li>
+		        <a href="${pageContext.request.contextPath}/calendar_excercise" class="nav-link active">
+		          <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="page">
+		            <use xlink:href="#table"></use>
+		          </svg>
+		          Exercise
+		        </a>
+		      </li>
 		    </ul>
 		    <hr>
 		    <div class="dropdown">
@@ -75,12 +75,11 @@
 
 		</div>
 
-		<c:if test="${not empty sessionScope.kcalList}">
-			    <h1>${sessionScope.kcalList.userid}님 환영합니다!</h1>
+				
+		<c:if test="${not empty sessionScope.exerciseList}">
+			    <h1>${sessionScope.exerciseList.userid}님 환영합니다!</h1>
 			</c:if>
-			
-			<h2>${kcalList[0].userid} 님의 BMI 기록</h2>
-
+			<h2>${exerciseList[0].userid} 님의 BMI 기록</h2>
     </main>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 
@@ -109,15 +108,15 @@
 				},
 				// 이벤트들
 				events: [
-				  <c:forEach var="kcal" items="${kcalList}" varStatus="status">
+				  <c:forEach var="exercise" items="${exerciseList}" varStatus="status">
 				  {
-				    title: '${kcal.classify}| kcal : ${kcal.calories}',
-				    start: '${kcal.date}'
+				    title: '${exercise.exercise_name}(${exercise.calories}kcal)',
+				    start: '${exercise.date}'
 				  }<c:if test="${!status.last}">,</c:if>
 				  </c:forEach>
 				]
 
-				
+
 				
 			});
 		});
@@ -135,60 +134,30 @@
       </div>
 	  <!--모달 내용-->
       <div class="modal-body">
-		<form action="calendar_kcal" method="post">
-
-				
-				<div class="form-check form-check-inline">
-				<input class="form-check-input" type="radio" name="classify" id="classify" value="아침">
-				<label class="form-check-label" for="inlineRadio1">아침</label>
-				</div>
-				<div class="form-check form-check-inline">
-				<input class="form-check-input" type="radio" name="classify" id="classify" value="점심">
-				<label class="form-check-label" for="inlineRadio2">점심</label>
-				</div>
-				<div class="form-check form-check-inline">
-				<input class="form-check-input" type="radio" name="classify" id="classify" value="저녁">
-				<label class="form-check-label" for="inlineRadio3">저녁</label>
-				</div><hr>
-
+		<form action="calendar_exercise" method="post">
 		  <div class="row mb-3">
-		    <label for="food_name" class="col-sm-2 col-form-label">food_name</label>
+		    <label for="userid" class="col-sm-2 col-form-label">userid</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" name="food_name" id="food_name"required>
+		      <input type="text" class="form-control" name="userid" id="userid" value="${sessionScope.loginMember.userid}" required>
 		    </div>
 		  </div>
 
 		  <div class="row mb-3">
-		    <label for="calories" class="col-sm-2 col-form-label">Calories</label>
+		    <label for="exercise_name" class="col-sm-2 col-form-label">exercise_name</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" name="exercise_name" id="exercise_name"required>
+		    </div>
+		  </div>
+
+		  <div class="row mb-3">
+		    <label for="calories" class="col-sm-2 col-form-label">calories</label>
 		    <div class="col-sm-10">
 		      <input type="number" class="form-control" name="calories" id="calories"required>
 		    </div>
 		  </div>
 
-	      <input type="hidden" class="form-control" name="date" id="date">
-		  <input type="hidden" class="form-control" name="userid" id="userid" value="${sessionScope.loginMember.userid}" required>
-
-			
-		  <!-- 동적으로 경로 지정  -->
-
-
-		  <div class="inner_box">
-		      <button id="searchAllBtn" class="SearchAllbtn">모든 음식 검색</button>
-		      <div class="search-part-row">
-		          <input type="text" id="searchInput" class="SearchTXT" placeholder="음식 또는 키워드를 입력하시오">
-		          <button id="searchBtn" class="Searchbtn">검색</button>
-		      </div>
-
-		  </div>
-		  <!-- 모달 영역 -->
-		  		  <div id="resultModal" class="modal">
-		  		      <div class="modal-content">
-		  		          <span class="close-btn">&times;</span>
-		  		          <h3>검색 결과</h3>
-		  		          <ul id="resultList"></ul>
-		  		      </div>
-		  		  </div>
 		  
+		      <input type="hidden" class="form-control" name="date" id="date">
 
 		  <div class="modal-footer">
 		    <button type="submit" class="btn btn-primary">저장</button>
@@ -199,6 +168,3 @@
     </div>
   </div>
 </div>
-
-
-<script src="${pageContext.request.contextPath}/js/Food/SearchFood.js"></script>

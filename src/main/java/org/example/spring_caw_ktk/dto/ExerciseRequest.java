@@ -3,8 +3,7 @@ package org.example.spring_caw_ktk.dto;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-public class Exercise {
-
+public class ExerciseRequest {
 	private int id;
 	private String userid;
 	private Date date;
@@ -12,25 +11,7 @@ public class Exercise {
     private int calories;
     private Timestamp created_at;
     
-    public Exercise() {}
 
-    public Exercise(int id,String exercise_name,int calories) {
-        this.id = id;
-        this.userid = userid;
-        this.date = date;
-        this.exercise_name = exercise_name;
-        this.calories=calories;
-        this.created_at = created_at;
-    }
-    
-    public Exercise(int id, String userid, Date date , String exercise_name,int calories,Timestamp created_at) {
-        this.id = id;
-        this.userid = userid;
-        this.date = date;
-        this.exercise_name = exercise_name;
-        this.calories=calories;
-        this.created_at = created_at;
-    }
 
 	public int getId() {
 		return id;
@@ -79,7 +60,6 @@ public class Exercise {
 	public void setCreated_at(Timestamp created_at) {
 		this.created_at = created_at;
 	}
-
 
 
 }

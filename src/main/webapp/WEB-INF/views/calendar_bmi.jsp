@@ -43,14 +43,14 @@
 		          BMI
 		        </a>
 		      </li>
-		      <li>
-		        <a href="#" class="nav-link text-white">
-		          <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
-		            <use xlink:href="#table"></use>
-		          </svg>
-		          Health
-		        </a>
-		      </li>
+			  <li>
+			    <a href="${pageContext.request.contextPath}/calendar_excercise" class="nav-link text-white">
+			      <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
+			        <use xlink:href="#table"></use>
+			      </svg>
+			      Exercise
+			    </a>
+			  </li>
 		    </ul>
 		    <hr>
 		    <div class="dropdown">
