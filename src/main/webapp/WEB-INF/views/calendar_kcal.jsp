@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <title>calendar_bmi</title>
+    <title>calendar_kcal</title>
 </head>
 
 <body> 
@@ -29,7 +29,8 @@
 		      </li>
 			  <li>
 			  	<a href="#" class="nav-link text-white">
-			  	<svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
+					<svg class="bi pe-none me-2" width="16" height="16" aria-hidden="page">
+			  	
 			  	<use xlink:href="#speedometer2"></use>
 			  	</svg>
 			  	Kcal
@@ -37,7 +38,7 @@
 			  </li>
 		      <li>
 		        <a href="#" class="nav-link active">
-		          <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="page">
+		          <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
 		            <use xlink:href="#speedometer2"></use>
 		          </svg>
 		          BMI
@@ -75,11 +76,12 @@
 
 		</div>
 
-				
-		<c:if test="${not empty sessionScope.bmiList}">
-			    <h1>${sessionScope.bmiList.userid}님 환영합니다!</h1>
+		<c:if test="${not empty sessionScope.kcalList}">
+			    <h1>${sessionScope.kcalList.userid}님 환영합니다!</h1>
 			</c:if>
-			<h2>${bmiList[0].userid} 님의 BMI 기록</h2>
+			
+			<h2>${kcalList[0].userid} 님의 BMI 기록</h2>
+
     </main>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 
@@ -108,26 +110,15 @@
 				},
 				// 이벤트들
 				events: [
-				  <c:forEach var="bmi" items="${bmiList}">
+				  <c:forEach var="kcal" items="${kcalList}" varStatus="status">
 				  {
-				    title: 'BMI : ${bmi.bmi}',
-				    start: '${bmi.date}',
-				    color: (function() {
-				      var bmiVal = ${bmi.bmi};
-				      if (bmiVal < 18.5) return 'blue';
-				      else if (bmiVal < 23) return 'green';
-				      else if (bmiVal < 25) return 'orange';
-				      else return 'red';
-				    })()
-				  },
+				    title: 'food : ${kcal.food_name}| kcal : ${kcal.calories}',
+				    start: '${kcal.date}'
+				  }<c:if test="${!status.last}">,</c:if>
 				  </c:forEach>
-				],
-				dayRender: function(date, cell) {
-					var newdate = moment(date).format('YYYY-MM-DD');
-					if (newdate === '2025-06-05') {
-						cell.css("background", "yellow");
-					}
-				}
+				]
+
+				
 				
 			});
 		});
@@ -145,7 +136,7 @@
       </div>
 	  <!--모달 내용-->
       <div class="modal-body">
-		<form action="calendar_bmi" method="post">
+		<form action="calendar_kcal" method="post">
 		  <div class="row mb-3">
 		    <label for="userid" class="col-sm-2 col-form-label">userid</label>
 		    <div class="col-sm-10">
@@ -154,16 +145,16 @@
 		  </div>
 
 		  <div class="row mb-3">
-		    <label for="height" class="col-sm-2 col-form-label">height_cm</label>
+		    <label for="food_name" class="col-sm-2 col-form-label">food_name</label>
 		    <div class="col-sm-10">
-		      <input type="number" step="0.1" class="form-control" name="height" id="height"required>
+		      <input type="text" class="form-control" name="food_name" id="food_name"required>
 		    </div>
 		  </div>
 
 		  <div class="row mb-3">
-		    <label for="weight" class="col-sm-2 col-form-label">weight_kg</label>
+		    <label for="calories" class="col-sm-2 col-form-label">Calories</label>
 		    <div class="col-sm-10">
-		      <input type="number" step="0.1" class="form-control" name="weight" id="weight"required>
+		      <input type="number" class="form-control" name="calories" id="calories"required>
 		    </div>
 		  </div>
 

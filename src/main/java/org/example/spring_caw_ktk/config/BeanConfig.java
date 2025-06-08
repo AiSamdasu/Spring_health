@@ -1,6 +1,7 @@
 package org.example.spring_caw_ktk.config;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.example.spring_caw_ktk.dao.BmiDao;
+import org.example.spring_caw_ktk.dao.KcalDao;
 import org.example.spring_caw_ktk.dao.MemberDao;
 import org.example.spring_caw_ktk.service.BmiService;
 import org.example.spring_caw_ktk.service.MemberRegisterService;
@@ -36,6 +37,11 @@ public class BeanConfig {
 	    @Bean
 	    public BmiDao bmiDao() {
 	        return new BmiDao(dataSource());
+	    }
+	    
+	    @Bean
+	    public KcalDao kcalDao() {
+	        return new KcalDao(dataSource());
 	    }
 
 	    
