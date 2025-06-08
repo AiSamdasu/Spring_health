@@ -43,6 +43,23 @@
     }
 %>
 
+
+
+<!-- 로그인 -->
+<c:if test="${not empty sessionScope.loginMember}">
+    <h1>${sessionScope.loginMember.name}님 환영합니다!</h1>
+</c:if>
+		
+<form action="${pageContext.request.contextPath}/login" method="get">
+    <button type="submit">로그인  </button>
+</form>
+<form action="${pageContext.request.contextPath}/lis" method="get">
+    <button type="submit">list보기  </button>
+</form>
+<form action="${pageContext.request.contextPath}/calendar_bmi" method="get">
+    <button type="submit">캘린더 보기  </button>
+</form>
+
 <!-- User 정보 입력해서 DB저장 파트 -->
 <form action="${pageContext.request.contextPath}/inputKcal" method="get">
     <button type="submit">BMI 수정및 확인하기  </button>
