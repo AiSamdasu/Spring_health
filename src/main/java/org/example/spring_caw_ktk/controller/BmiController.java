@@ -22,10 +22,10 @@ public class BmiController {
 	@Autowired
 	 private BmiService BmiService;
 	
-	 @RequestMapping("/test02")
-	 public String handleBmi() {   return "test02";  }
+	 @RequestMapping("/calendar_bmi")
+	 public String handleBmi() {   return "calendar_bmi";  }
 	
-	 @PostMapping("/test02")
+	 @PostMapping("/calendar_bmi")
 	 public String handleBmiPost(HttpSession session,BmiRequest regReq,Model model) {
 		
 		 try {
