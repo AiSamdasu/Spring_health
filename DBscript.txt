@@ -201,4 +201,7 @@ CREATE TABLE UserRank (
                       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                       FOREIGN KEY (userid) REFERENCES user(userid)
 );
+<<<<<<< HEAD
 연습왜 커밋 안됨
+=======
+>>>>>>> branch 'main' of https://github.com/AiSamdasu/Spring_health.git
