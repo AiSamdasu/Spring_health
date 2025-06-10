@@ -44,7 +44,7 @@
 		        </a>
 		      </li>
 			  <li>
-			    <a href="${pageContext.request.contextPath}/calendar_excercise" class="nav-link text-white">
+			    <a href="${pageContext.request.contextPath}/calendar_exercise" class="nav-link text-white">
 			      <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
 			        <use xlink:href="#table"></use>
 			      </svg>
@@ -121,13 +121,13 @@
 				    })()
 				  },
 				  </c:forEach>
-				],
-				dayRender: function(date, cell) {
-					var newdate = moment(date).format('YYYY-MM-DD');
-					if (newdate === '2025-06-05') {
-						cell.css("background", "yellow");
-					}
-				}
+				]
+//				dayRender: function(date, cell) {
+//					var newdate = moment(date).format('YYYY-MM-DD');
+//					if (newdate === '2025-06-05') {
+//						cell.css("background", "yellow");
+//					}
+//				}
 				
 			});
 		});
@@ -144,15 +144,18 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 	  <!--모달 내용-->
+	  
       <div class="modal-body">
 		<form action="calendar_bmi" method="post">
-		  <div class="row mb-3">
+		  
+			<!--
+			<div class="row mb-3">
 		    <label for="userid" class="col-sm-2 col-form-label">userid</label>
 		    <div class="col-sm-10">
 		      <input type="text" class="form-control" name="userid" id="userid" value="${sessionScope.loginMember.userid}" required>
 		    </div>
 		  </div>
-
+		  -->
 		  <div class="row mb-3">
 		    <label for="height" class="col-sm-2 col-form-label">height_cm</label>
 		    <div class="col-sm-10">
@@ -167,7 +170,7 @@
 		    </div>
 		  </div>
 
-		  
+		  <input type="hidden" class="form-control" name="userid" id="userid">
 		      <input type="hidden" class="form-control" name="date" id="date">
 
 		  <div class="modal-footer">
