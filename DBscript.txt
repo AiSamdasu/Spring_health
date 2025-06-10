@@ -201,4 +201,4 @@ CREATE TABLE UserRank (
                       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                       FOREIGN KEY (userid) REFERENCES user(userid)
 );
-연습
+연습왜 커밋 안됨
