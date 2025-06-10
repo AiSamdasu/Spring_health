@@ -205,3 +205,4 @@ CREATE TABLE UserRank (
 연습왜 커밋 안됨
 =======
 >>>>>>> branch 'main' of https://github.com/AiSamdasu/Spring_health.git
+g해결되었나?
