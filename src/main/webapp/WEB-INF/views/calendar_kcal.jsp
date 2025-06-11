@@ -73,14 +73,8 @@
 		  
 		  <!-- 캘린더 본문 영역 -->
 		  <div class="flex-grow-1 d-flex flex-column"style="overflow: hidden;">
-			
-			  <!-- 텍스트 영역 (예: 상단 바)
-			  <div style="padding: 16px; background-color: #f8f9fa;">
-			    <h4>📌 여기는 텍스트 영역입니다</h4>
-			    <p>FullCalendar 위에 설명 등을 넣을 수 있어요.</p>
-			  </div> -->
 
-			  <!-- FullCalendar 영역 (남은 높이 전체 사용) -->
+			  <!-- FullCalendar 영역  -->
 			  <div style="padding: 16px;">
 			  	<div style="flex-grow: 1; overflow: hidden;" >
 			    	<div id="calendar" style="height: 100%;"></div>
