@@ -22,7 +22,7 @@ public class BmiController {
 	 private BmiService BmiService;
 	
 	 @RequestMapping("/calendar_bmi")
-	 public String handleBmi() {   return "Calendar/calendar_bmi";  }
+	 public String handleBmi() {   return "calendar_bmi";  }
 	
 	 @PostMapping("/calendar_bmi")
 	 public String handleBmiPost(HttpSession session,BmiRequest regReq,Model model) {
@@ -40,7 +40,7 @@ public class BmiController {
 		        model.addAttribute("bmiList", bmiList);
 		        model.addAttribute("loginMember", loginMember);
 
-			 return "Calendar/calendar_bmi";
+			 return "calendar_bmi";
 		 } catch (Exception ex) {
 			 ex.printStackTrace();  // 에러 로그 확인
 			 return "test02_error";

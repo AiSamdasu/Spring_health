@@ -7,12 +7,14 @@ import java.sql.Statement;
 import javax.sql.DataSource;
 
 import org.example.spring_caw_ktk.dto.Member;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.*;
 
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 public class MemberDao {
+	@Autowired
     private JdbcTemplate jdbcTemplate;
 
     public MemberDao(DataSource dataSource) {
@@ -79,5 +81,23 @@ public class MemberDao {
             member.setId(key.intValue());
         }
     }
+
+	public Member selectByNickname(String nickname) {
+		List<Member> results = jdbcTemplate.query(
+	            "SELECT * FROM user WHERE nickname = ?",
+	            (rs, rowNum) -> new Member(
+	                rs.getInt("id"),
+	                rs.getString("userid"),
+	                rs.getString("password"),
+	                rs.getString("nickname"),
+	                rs.getString("name"),
+	                rs.getInt("age"),
+	                rs.getString("gender"),
+	                rs.getTimestamp("created_at")
+	            ),
+	            nickname 
+	        );
+	        return results.isEmpty() ? null : results.get(0);
+	}
 
 }

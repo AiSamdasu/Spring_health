@@ -25,10 +25,19 @@ public class LoginController {
 	     try {
 	         Member member = MemberLoginService.login(req);
 	         session.setAttribute("loginMember", member);
-	         return "login_process";
+	         return "redirect:/MainPage";
 	     } catch (Exception e) {
-	         e.printStackTrace();
-	         return "login_error";  // 에러 페이지로
+	    	 e.printStackTrace();
+	    	 String message = e.getMessage();
+	         if ("WrongID".equals(message)) {
+	             return "redirect:/login?error=id";
+	         } else if ("WrongPW".equals(message)) {
+	             return "redirect:/login?error=pw";
+	         } else {
+	             return "redirect:/login?error=unknown";
+	         }
+	         
+	         
 	     }
 	 }
 

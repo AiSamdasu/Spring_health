@@ -22,7 +22,6 @@ public class MemberRegController {
 		 model.addAttribute("members", memberList);
 		 return "list";
 	 }*/
-	
 	@Autowired
 	 private MemberRegisterService memberRegisterService;
 	
@@ -34,9 +33,16 @@ public class MemberRegController {
 		 try {
 			 memberRegisterService.regist(regReq);
 			 return "register_process";
-		 } catch (Exception ex) {
-			 ex.printStackTrace();  // 에러 로그 확인
-			 return "register_error";
+		 } catch (Exception e) {
+			 e.printStackTrace();  // 에러 로그 확인
+			 String message = e.getMessage();
+	         if ("DuplicateUserID".equals(message)) {
+	             return "redirect:/register?error=id";
+	         } else if ("DuplicateNickname".equals(message)) {
+	             return "redirect:/register?error=nickname";
+	         } else {
+	             return "redirect:/register?error=unknown";
+	         }
 		 }
 	 }
 	 

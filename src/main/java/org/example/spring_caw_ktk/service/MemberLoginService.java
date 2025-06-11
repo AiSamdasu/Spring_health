@@ -19,12 +19,12 @@ public class MemberLoginService {
 
         // 회원이 존재하지 않으면 로그인 실패
         if (member == null) {
-            throw new Exception("UserNotFoundException");
+        	throw new Exception("WrongID");
         }
 
         // 비밀번호가 다르면 로그인 실패
         if (!member.getPassword().equals(req.getPassword())) {
-            throw new Exception("WrongPasswordException");
+        	throw new Exception("WrongPW");
         }
 
         // 로그인 성공
