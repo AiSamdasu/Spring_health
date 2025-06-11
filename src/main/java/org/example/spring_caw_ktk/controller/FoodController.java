@@ -2,6 +2,7 @@ package org.example.spring_caw_ktk.controller;
 
 import org.example.spring_caw_ktk.dao.FoodRepository;
 import org.example.spring_caw_ktk.dto.Food;
+import org.example.spring_caw_ktk.dto.KcalRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ import java.util.Map;
 
 @Controller
 public class FoodController {
-
+	
     // 음식 검색 페이지 반환
     @GetMapping("/searchFoodPage")
     public String searchFoodPage() {
@@ -33,24 +34,31 @@ public class FoodController {
 
     @PostMapping("/submitFoodSelection")
     @ResponseBody
-    public String submitFoodSelection(@RequestParam("foodName") String foodName,
-                                      @RequestParam("calories") int calories,
+    public String submitFoodSelection(@ModelAttribute KcalRequest kcalRequest,
                                       HttpSession session) {
-        // 이름 목록
+
+        String foodName = kcalRequest.getFood_name();
+        Integer calories = kcalRequest.getCalories();
+
+        // null 체크
+        if (foodName == null || foodName.trim().isEmpty() || calories == null) {
+            return "음식 이름이나 칼로리가 유효하지 않습니다.";
+        }
+
+        // 세션에 저장
         List<String> foodNames = (List<String>) session.getAttribute("selectedFoodNames");
         if (foodNames == null) foodNames = new ArrayList<>();
         foodNames.add(foodName);
         session.setAttribute("selectedFoodNames", foodNames);
 
-        // 칼로리 목록
         List<Integer> caloriesList = (List<Integer>) session.getAttribute("selectedCaloriesList");
         if (caloriesList == null) caloriesList = new ArrayList<>();
         caloriesList.add(calories);
         session.setAttribute("selectedCaloriesList", caloriesList);
 
-
         return "선택 완료";
     }
+
 
     @GetMapping("/showFoodDetail")
     public String showFoodDetail(@RequestParam("foodName") String foodName, Model model) {
@@ -59,6 +67,7 @@ public class FoodController {
         model.addAttribute("food", food);
         return "SearchFood/showFood";  // Show.jsp //SearchFood/showFood
     }
+    
     
     
 }

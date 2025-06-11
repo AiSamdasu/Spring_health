@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // 음식 리스트 출력 함수
-
+/*
 function displayFoodList(data) {
     $('#resultList').empty();
 
@@ -58,20 +58,21 @@ function displayFoodList(data) {
     });
 
     openResultModal();
-}
-/*
+}*/
+
 function displayFoodList(data) {
     $('#resultList').empty();
 
     data.forEach(function (food) {
-        const button = $('<button>')
-            .addClass('food-btn list-group-item list-group-item-action')
+        const button = $('<button type="button">')
+//            .addClass('food-btn list-group-item list-group-item-action')
             .text(`${food.foodName} - ${food.calories} kcal`)
-            .click(function () {
+            .click(function (event) {
+				event.preventDefault(); 
                 // 1. 선택한 음식 정보를 hidden input에 저장
-				$('#selectedFoodCalories').val(food.calories); // ⭐ 여기가 핵심!
-				$('#selectedFoodName').text(food.foodName); // 모달에 보여주기용
-
+				$('#selectedFoodName').val(food.foodName);           // 올바른 방식
+				$('#selectedFoodCalories').val(food.calories);       // 올바른 방식
+				
                 // 2. 모달 안에 텍스트로 표시
                 $('#selectedFoodDisplay').html(`선택한 음식: <strong>${food.foodName}</strong> (${food.calories} kcal)`);
 
@@ -83,7 +84,7 @@ function displayFoodList(data) {
     });
 
     //openResultModal(); // 검색 결과 모달이 따로 있을 경우
-}*/
+}
 
 
 // 전체 검색
@@ -128,3 +129,4 @@ $('#searchBtn').click(function () {
         }
     });
 });
+

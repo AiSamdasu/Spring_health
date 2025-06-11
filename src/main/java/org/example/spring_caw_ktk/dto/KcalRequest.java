@@ -8,7 +8,7 @@ public class KcalRequest {
 	private String userid;
 	private Date date;
     private String food_name;
-    private int calories;
+    private Integer calories;
     private Timestamp created_at;
     private String classify;
 
@@ -44,11 +44,11 @@ public class KcalRequest {
 		this.food_name = food_name;
 	}
 
-	public int getCalories() {
+	public Integer getCalories() {
 		return calories;
 	}
 
-	public void setCalories(int calories) {
+	public void setCalories(Integer calories) {
 		this.calories = calories;
 	}
 
