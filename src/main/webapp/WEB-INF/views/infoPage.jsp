@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 25. 6. 12.
-  Time: 오전 1:32
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -12,7 +6,6 @@
     <meta charset="UTF-8">
     <title>식단 관리 시스템</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS 링크 -->
     <%@ include file="./bootstrap/bootstrap.jsp" %>
     <style>
         body {
@@ -55,12 +48,7 @@
                 <div class="carousel-item">
                     <img src="${pageContext.request.contextPath}/images/ex2.png" class="d-block w-100 example-img"  alt="예시 이미지 2">
                 </div>
-                <div class="carousel-item">
-                    <img src="${pageContext.request.contextPath}/images/ex3.png" class="d-block w-100 example-img" alt="예시 이미지 3">
-                </div>
-                <div class="carousel-item active">
-                    <img src="${pageContext.request.contextPath}/images/ee1.png" class="d-block w-100 example-img"  alt="예시 이미지 4">
-                </div>
+
                 <div class="carousel-item">
                     <img src="${pageContext.request.contextPath}/images/ee2.png" class="d-block w-100 example-img"  alt="예시 이미지 5">
                 </div>
@@ -87,6 +75,7 @@
         <form action="${pageContext.request.contextPath}/register" method="get" >
             <button class="btn btn-success btn-lg" type="submit">회원가입  </button>
         </form>
+
     </div>
 </div>
 

@@ -1,147 +1,111 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true" %>
-<%@ page import="java.util.*" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>메인 페이지</title>
+    <title>캘린더 슬라이드</title>
+
+    <%@ include file="./bootstrap/bootstrap.jsp" %>
+    <style>
+        .carousel-img {
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .carousel-caption {
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 10px;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: black;
+            background-size: 100%, 100%;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+        }
+
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
+        }
+    </style>
 </head>
+<body class="bg-light">
 
-<body>
-<form action="${pageContext.request.contextPath}/Test" method="get">
-    <button type="submit">Test01로 이동</button>
-</form>
+<div class="container text-center mt-5">
+    <h2 class="mb-4 fw-bold">나의 건강 캘린더나 순위 보기 <br> 화살표를 눌러 확인 하세요</h2>
 
-<!-- 음식 파트 -->
+    <!-- 슬라이드 시작 -->
+    <div id="calendarCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+        <div class="carousel-inner">
 
-<h2>선택된 음식 목록</h2>
+            <!-- 슬라이드 1 -->
+            <div class="carousel-item active text-center">
+                <img src="${pageContext.request.contextPath}/images/ee3.png"
+                     class="d-block w-100 carousel-img mx-auto" alt="캘린더 1">
+                <div class="mt-3">
+                    <form action="${pageContext.request.contextPath}/calendar_bmi" method="get">
+                        <button type="submit" class="btn btn-primary btn-lg">📅 BMI 캘린더 보기</button>
+                    </form>
+                </div>
+            </div>
 
-<%
-    Map<String, Integer> foodCountMap = (Map<String, Integer>) request.getAttribute("foodCountMap");
-    Map<String, Integer> foodTotalCalMap = (Map<String, Integer>) request.getAttribute("foodTotalCalMap");
+            <!-- 슬라이드 2 -->
+            <div class="carousel-item text-center">
+                <img src="${pageContext.request.contextPath}/images/ee3.png"
+                     class="d-block w-100 carousel-img mx-auto" alt="캘린더 2">
+                <div class="mt-3">
+                    <form action="${pageContext.request.contextPath}/calendar_kcal" method="get">
+                        <button type="submit" class="btn btn-success btn-lg">📅 Kcal 캘린더 보기</button>
+                    </form>
+                </div>
+            </div>
 
-    if (foodCountMap != null && !foodCountMap.isEmpty()) {
-        List<String> foodKeys = new ArrayList<>(foodCountMap.keySet());
-%>
-<ul>
-    <%
-        for (int i = 0; i < foodKeys.size(); i++) {
-            String name = foodKeys.get(i);
-            int count = foodCountMap.get(name);
-            int total = foodTotalCalMap.get(name);
-    %>
-    <li><%= name %> - <%= count %>개 - <%= total %> kcal</li>
-    <%
-        }
-    %>
-</ul>
-<%
-} else {
-%>
-<p>선택된 음식이 없습니다.</p>
-<%
-    }
-%>
+            <!-- 슬라이드 3 -->
+            <div class="carousel-item text-center">
+                <img src="${pageContext.request.contextPath}/images/ee4.png"
+                     class="d-block w-100 carousel-img mx-auto" alt="캘린더 3">
+                <div class="mt-3">
+                    <form action="${pageContext.request.contextPath}/calendar_exercise" method="get">
+                        <button type="submit" class="btn btn-warning btn-lg">📅 운동 캘린더 보기</button>
+                    </form>
+                </div>
+            </div>
 
+            <!-- 슬라이드 4 -->
+            <div class="carousel-item text-center">
+                <img src="${pageContext.request.contextPath}/images/ee1.png"
+                     class="d-block w-100 carousel-img mx-auto" alt="캘린더 4">
+                <div class="mt-3">
+                    <form action="${pageContext.request.contextPath}/rank" method="get">
+                        <button type="submit" class="btn btn-info btn-lg">🏆 순위 보기</button>
+                    </form>
+                </div>
+            </div>
 
+        </div>
 
-<!-- 로그인 버튼 -->
-<c:if test="${not empty sessionScope.loginMember}">
-    <h1>${sessionScope.loginMember.name}님 환영합니다!</h1>
-</c:if>
+        <!-- 이전/다음 버튼 -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#calendarCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#calendarCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
 
-<!-- 회원가입 버튼-->
-<form action="${pageContext.request.contextPath}/register" method="get">
-    <button type="submit">회원가입  </button>
-</form>
+    <!-- 로그아웃 버튼 -->
+    <form action="${pageContext.request.contextPath}/logout" method="get" class="d-grid gap-2" style="max-width: 300px; margin: 0 auto;">
+        <button type="submit" class="btn btn-danger btn-lg">🚪 로그아웃</button>
+    </form>
+</div>
 
-<!-- 로그인 버튼-->
-<form action="${pageContext.request.contextPath}/login" method="get">
-    <button type="submit">로그인  </button>
-</form>
-
-<!--로그아웃 버튼-->
-<form action="${pageContext.request.contextPath}/logout" method="get">
-    <button type="submit">로그아웃  </button>
-</form>
-
-<!--bmi 기록보기 버튼 : 확인용이기에 메인 화면에서는 지우기 -->
-<form action="${pageContext.request.contextPath}/lis" method="get">
-    <button type="submit">list보기  </button>
-</form>
-
-<!--bmi 캘린더 버튼-->
-<form action="${pageContext.request.contextPath}/calendar_bmi" method="get">
-    <button type="submit">캘린더 보기  </button>
-</form>
-
-<!--kcal 기록보기 버튼 : 확인용이기에 메인 화면에서는 지우기 -->
-<form action="${pageContext.request.contextPath}/lis2" method="get">
-    <button type="submit">list2보기  </button>
-</form>
-
-<!--Kcal 캘린더 버튼-->
-<form action="${pageContext.request.contextPath}/calendar_kcal" method="get">
-    <button type="submit">캘린더 보기  </button>
-</form>
-
-<!--exercise 기록보기 버튼 : 확인용이기에 메인 화면에서는 지우기 -->
-<form action="${pageContext.request.contextPath}/lis3" method="get">
-    <button type="submit">list3보기  </button>
-</form>
-
-<!--exercise 캘린더 버튼-->
-<form action="${pageContext.request.contextPath}/calendar_exercise" method="get">
-    <button type="submit">캘린더 보기  </button>
-</form>
-
-<!-- User 정보 입력해서 DB저장 파트 -->
-<form action="${pageContext.request.contextPath}/inputKcal" method="get">
-    <button type="submit">BMI 수정및 확인하기  </button>
-</form>
-
-<!-- 칼로리 확인 파트 input 부분을 sum으로 수정 예정 -->
-
-<form action="${pageContext.request.contextPath}/evaluateKcal" method="post">
-    <input type="number" name="SumKcal" placeholder="총 칼로리" required>
-    <button type="submit">내 칼로리 확인</button>
-</form>
-
-<h2>당신의 BMI: <%= request.getAttribute("bmi") %></h2>
-<h2>총 섭취 칼로리: <%= request.getAttribute("sumKcal") %> kcal</h2>
-<h2>결과: <strong><%= request.getAttribute("grade") %></strong></h2>
-
-
-<!-- 운동 파트 -->
-
-<h2>운동 리스트</h2>
-
-<%
-    Map<String, Integer> exerciseCountMap = (Map<String, Integer>) request.getAttribute("exerciseCountMap");
-    Map<String, Integer> exerciseTotalCalMap = (Map<String, Integer>) request.getAttribute("exerciseTotalCalMap");
-
-    if (exerciseCountMap != null && !exerciseCountMap.isEmpty()) {
-        List<String> exerciseKeys = new ArrayList<>(exerciseCountMap.keySet());
-%>
-<ul>
-    <%
-        for (int i = 0; i < exerciseKeys.size(); i++) {
-            String name = exerciseKeys.get(i);
-            int count = exerciseCountMap.get(name);
-            int total = exerciseTotalCalMap.get(name);
-    %>
-    <li><%= name %> - <%= count %>개 - <%= total %> kcal</li>
-    <%
-        }
-    %>
-</ul>
-<%
-} else {
-%>
-<p>선택된 운동이 없습니다.</p>
-<%
-    }
-%>
-
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
