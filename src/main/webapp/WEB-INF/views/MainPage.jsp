@@ -45,38 +45,52 @@
 
 
 
-<!-- 로그인 -->
+<!-- 로그인 버튼 -->
 <c:if test="${not empty sessionScope.loginMember}">
     <h1>${sessionScope.loginMember.name}님 환영합니다!</h1>
 </c:if>
 
+<!-- 회원가입 버튼-->
 <form action="${pageContext.request.contextPath}/register" method="get">
     <button type="submit">회원가입  </button>
 </form>
 
+<!-- 로그인 버튼-->
 <form action="${pageContext.request.contextPath}/login" method="get">
     <button type="submit">로그인  </button>
 </form>
 
+<!--로그아웃 버튼-->
 <form action="${pageContext.request.contextPath}/logout" method="get">
     <button type="submit">로그아웃  </button>
 </form>
 
+<!--bmi 기록보기 버튼 : 확인용이기에 메인 화면에서는 지우기 -->
 <form action="${pageContext.request.contextPath}/lis" method="get">
     <button type="submit">list보기  </button>
 </form>
+
+<!--bmi 캘린더 버튼-->
 <form action="${pageContext.request.contextPath}/calendar_bmi" method="get">
     <button type="submit">캘린더 보기  </button>
 </form>
+
+<!--kcal 기록보기 버튼 : 확인용이기에 메인 화면에서는 지우기 -->
 <form action="${pageContext.request.contextPath}/lis2" method="get">
     <button type="submit">list2보기  </button>
 </form>
+
+<!--Kcal 캘린더 버튼-->
 <form action="${pageContext.request.contextPath}/calendar_kcal" method="get">
     <button type="submit">캘린더 보기  </button>
 </form>
+
+<!--exercise 기록보기 버튼 : 확인용이기에 메인 화면에서는 지우기 -->
 <form action="${pageContext.request.contextPath}/lis3" method="get">
     <button type="submit">list3보기  </button>
 </form>
+
+<!--exercise 캘린더 버튼-->
 <form action="${pageContext.request.contextPath}/calendar_exercise" method="get">
     <button type="submit">캘린더 보기  </button>
 </form>
