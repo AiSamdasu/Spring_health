@@ -49,10 +49,19 @@
 <c:if test="${not empty sessionScope.loginMember}">
     <h1>${sessionScope.loginMember.name}님 환영합니다!</h1>
 </c:if>
-		
+
+<form action="${pageContext.request.contextPath}/register" method="get">
+    <button type="submit">회원가입  </button>
+</form>
+
 <form action="${pageContext.request.contextPath}/login" method="get">
     <button type="submit">로그인  </button>
 </form>
+
+<form action="${pageContext.request.contextPath}/logout" method="get">
+    <button type="submit">로그아웃  </button>
+</form>
+
 <form action="${pageContext.request.contextPath}/lis" method="get">
     <button type="submit">list보기  </button>
 </form>

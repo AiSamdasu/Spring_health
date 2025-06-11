@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.example.spring_caw_ktk.dto.Bmi;
 import org.example.spring_caw_ktk.dto.BmiRequest;
 import org.example.spring_caw_ktk.dto.Member;
-import org.example.spring_caw_ktk.dto.RegisterRequest;
 import org.example.spring_caw_ktk.service.BmiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class BmiController {
@@ -23,7 +22,7 @@ public class BmiController {
 	 private BmiService BmiService;
 	
 	 @RequestMapping("/calendar_bmi")
-	 public String handleBmi() {   return "calendar_bmi";  }
+	 public String handleBmi() {   return "Calendar/calendar_bmi";  }
 	
 	 @PostMapping("/calendar_bmi")
 	 public String handleBmiPost(HttpSession session,BmiRequest regReq,Model model) {
@@ -41,7 +40,7 @@ public class BmiController {
 		        model.addAttribute("bmiList", bmiList);
 		        model.addAttribute("loginMember", loginMember);
 
-			 return "calendar_bmi";
+			 return "Calendar/calendar_bmi";
 		 } catch (Exception ex) {
 			 ex.printStackTrace();  // 에러 로그 확인
 			 return "test02_error";

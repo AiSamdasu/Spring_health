@@ -5,6 +5,12 @@
 
 <head>
     <title>calendar_bmi</title>
+	<!-- Bootstrap CSS  -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Bootstrap JS + Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body> 
@@ -15,7 +21,7 @@
 		
 		<div class="d-flex" style="height: 100vh;">
 		  <!-- 왼쪽 사이드바 -->
-		  <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+		  <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 260px;">
 		    <hr>
 		    <ul class="nav nav-pills flex-column mb-auto">
 				
@@ -56,30 +62,42 @@
 		    <div class="dropdown">
 		      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
 		         data-bs-toggle="dropdown" aria-expanded="false">
-		        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-		        <strong>mdo</strong>
+		        <strong>${sessionScope.loginMember.nickname}님</strong>
 		      </a>
 		      <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-		        <li><a class="dropdown-item" href="#">New project...</a></li>
-		        <li><a class="dropdown-item" href="#">Settings</a></li>
-		        <li><a class="dropdown-item" href="#">Profile</a></li>
-		        <li><hr class="dropdown-divider"></li>
-		        <li><a class="dropdown-item" href="#">Sign out</a></li>
+		        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Sign out</a></li>
 		      </ul>
 		    </div>
 		  </div>
+		  <!-- 캘린더 본문 영역 -->
+		  <div class="flex-grow-1 d-flex flex-column"style="overflow: hidden;">
 
-		  <!-- 오른쪽 본문 -->
-		  <div class="flex-grow-1 p-4" id='calendar'></div>
-		  
+		    <!-- FullCalendar 영역  -->
+		    <div style="padding: 16px;">
+		    	<div style="flex-grow: 1; overflow: hidden;" >
+		      	<div id="calendar" style="height: 100%;"></div>
+		    	</div>
+		    </div>
+
+		  </div>
+
+		  <!-- 오른쪽 사이드바 (추가 설명) -->
+		    <div class="d-flex flex-column flex-shrink-0 p-3 border-start" style="width: 220px; background-color: #f8f9fa;">
+		      <hr>
+		  	<h5>오늘의 bmi</h5>
+		  	<hr>
+		      <p>키 : 000000</p>
+		  	<p>몸무게: 000000</p>
+		  	<p> 적정 bmi : 000000</p>
+		  	<hr>
+		  	<p> 잘 하고 있어요!
+		  	
+		    </div>
 
 		</div>
 
 				
-		<c:if test="${not empty sessionScope.bmiList}">
-			    <h1>${sessionScope.bmiList.userid}님 환영합니다!</h1>
-			</c:if>
-			<h2>${bmiList[0].userid} 님의 BMI 기록</h2>
+
     </main>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 
