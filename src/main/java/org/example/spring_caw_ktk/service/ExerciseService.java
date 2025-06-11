@@ -56,4 +56,15 @@ public class ExerciseService {
 	    // 해당 사용자 BMI 이력 조회
 	    return exerciseDao.selectByUserid(req.getUserid());
 	}
+
+
+	public List<Exercise> showTodayExercise(ExerciseRequest req) throws Exception{
+		// 사용자 존재 여부 확인
+	    Member member = memberDao.selectByUserid(req.getUserid());
+	    if (member == null) {
+	        throw new Exception("해당 사용자가 존재하지 않습니다: " + req.getUserid());
+	    }
+	 // 해당 사용자 exercise 이력 조회
+		return exerciseDao.getTodayExercise(req.getUserid());
+	}
 }

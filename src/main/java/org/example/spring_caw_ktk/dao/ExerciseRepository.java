@@ -37,9 +37,8 @@ public class ExerciseRepository {
 
         return list;
     }
-    // 사용자별 총 칼로리 합계 반환
-    public int getTotalCaloriesByUser(String userid) {
-        String sql = "SELECT COALESCE(SUM(calories), 0) FROM user_exercise WHERE userid = ?";
-        return jdbcTemplate.queryForObject(sql, Integer.class, userid);
-    }
+
+    
+     
+	
 }

@@ -3,10 +3,12 @@ package org.example.spring_caw_ktk.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.example.spring_caw_ktk.dto.Bmi;
 import org.example.spring_caw_ktk.dto.Exercise;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -74,5 +76,31 @@ public class ExerciseDao {
         if (key != null) {
         	exercise.setId(key.intValue());
         }
+    }
+
+    public List<Exercise> getTodayExercise(String userid) {
+        try {
+            return jdbcTemplate.query(
+                "SELECT * FROM user_exercise WHERE userid = ? AND DATE(date) = CURDATE()",
+                (rs, rowNum) -> new Exercise(
+                    rs.getInt("id"),
+                    rs.getString("userid"),
+                    rs.getDate("date"),
+                    rs.getString("exercise_name"),
+                    rs.getInt("calories"),
+                    rs.getTimestamp("created_at")
+                ),
+                userid
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>(); // 예외 발생 시 빈 리스트 반환
+        }
+    }
+
+    // 사용자별 총 칼로리 합계 반환
+    public int getTotalCaloriesByUser(String userid) {
+       String sql = "SELECT COALESCE(SUM(calories), 0) FROM user_exercise WHERE userid = ?";
+        return jdbcTemplate.queryForObject(sql, Integer.class, userid);
     }
 }

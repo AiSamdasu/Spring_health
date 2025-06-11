@@ -45,7 +45,7 @@ public class BmiController {
 	        return "calendar_bmi";
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	        return "test02_error";
+	        return "";
 	    }
 	}
 	

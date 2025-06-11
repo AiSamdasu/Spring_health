@@ -1,6 +1,7 @@
 package org.example.spring_caw_ktk.controller;
 
 import org.example.spring_caw_ktk.dao.RankRepository;
+import org.example.spring_caw_ktk.dao.ExerciseDao;
 import org.example.spring_caw_ktk.dao.ExerciseRepository;
 import org.example.spring_caw_ktk.dto.Exercise;
 import org.example.spring_caw_ktk.dto.Rank;
@@ -22,7 +23,7 @@ public class RankController {
 
 
     @Autowired
-    private ExerciseRepository exerciseRepository;
+    private ExerciseDao exerciseDao;
 
     @PostMapping("/insertExercise")
     public String insertExercise(@ModelAttribute Exercise exercise, HttpSession session) {
@@ -33,10 +34,10 @@ public class RankController {
         exercise.setUserid(user.getUserid());
 
         // 1. 운동 저장
-        exerciseRepository.insert(exercise);
+        exerciseDao.insert(exercise);
 
         // 2. 총 칼로리 계산 후 랭킹 갱신
-        int totalCalories = exerciseRepository.getTotalCaloriesByUser(user.getUserid());
+        int totalCalories = exerciseDao.getTotalCaloriesByUser(user.getUserid());
         rankRepo.saveOrUpdateRank(user.getUserid(), totalCalories);
 
         return "redirect:/exerciseList";  // 적절한 페이지로 리다이렉트

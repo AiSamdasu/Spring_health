@@ -86,10 +86,21 @@
 		      <hr>
 		  	<h5>오늘의 운동</h5>
 		  	<hr>
-			<p>운동 종류 : 
-			<p>-
-			<p>-
-		    <p>소모 칼로리 : 000000</p>
+			<c:choose>
+			  <c:when test="${not empty todayExerciseList}">
+			    <p>운동 종류:</p>
+			    <c:forEach var="ex" items="${todayExerciseList}">
+			      <p>- <c:out value="${ex.exercise_name}" /></p>
+			    </c:forEach>
+
+			    <p>소모 칼로리:
+				  <c:out value="${totalCalories}" />  
+			  </p>
+			  </c:when>
+			  <c:otherwise>
+			    <p>오늘의 운동 기록이 없습니다.</p>
+			  </c:otherwise>
+			</c:choose>
 		  	
 		  	<hr>
 		  	<p> 잘 하고 있어요!

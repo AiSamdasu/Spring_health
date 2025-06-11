@@ -39,7 +39,20 @@ public class ExerciseController {
 	        String userid = loginMember.getUserid();
 	        ExerciseRequest req = new ExerciseRequest();
 	        req.setUserid(userid);
-
+	        // 오늘의 운동 리스트 가져오기
+	        List<Exercise> todayExerciseList = ExerciseService.showTodayExercise(req);
+	        
+	        // 소모 칼로리 총합 계산
+	        int totalCalories = 0;
+	        if (todayExerciseList != null) {
+	            for (Exercise exercise : todayExerciseList) {
+	                totalCalories += (exercise.getCalories() != null ? exercise.getCalories() : 0);
+	            }
+	        }
+	        
+	        model.addAttribute("todayExerciseList",todayExerciseList);
+	        model.addAttribute("totalCalories", totalCalories);
+	        
 	        List<Exercise> exerciseList = ExerciseService.showExercise(req);
 	        model.addAttribute("exerciseList", exerciseList);
 	        model.addAttribute("loginMember", loginMember);
