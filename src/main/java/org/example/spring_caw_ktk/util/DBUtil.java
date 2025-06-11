@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class DBUtil {
     public static Connection getConnection() {
         try {
-            String url = "jdbc:mysql://localhost:3306/spring_univ_project_db";
+            String url = "jdbc:mysql://localhost:3307/spring_univ_project_db";
             String user = "KTKCAW";
             String password = "1234";
 

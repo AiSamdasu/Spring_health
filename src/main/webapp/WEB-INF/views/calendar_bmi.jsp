@@ -180,7 +180,7 @@
 		    </div>
 		  </div>
 
-		  <input type="hidden" class="form-control" name="userid" id="userid">
+		  <input type="hidden" class="form-control" name="userid" id="userid" value="${sessionScope.loginMember.userid}" required>
 		   <input type="hidden" class="form-control" name="date" id="date">
 
 		  <div class="modal-footer">
