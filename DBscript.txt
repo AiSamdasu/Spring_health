@@ -195,14 +195,27 @@ CREATE TABLE user_kcal (
 
 INSERT INTO user_kcal (userid, date, food_name, calories,classify) VALUES ('kim01', '2025-05-02', '김치',30,'아침');
 
+
+-- excercise 기록 테이블
+CREATE TABLE user_exercise (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    userid VARCHAR(50)  NOT NULL,
+    date DATE not null,
+	exercise_name VARCHAR(100) NOT NULL,
+    calories INT default NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (userid) REFERENCES user(userid)
+);
+
+INSERT INTO user_exercise (userid, date, exercise_name, calories) VALUES ('kim01', '2025-05-02', '수영',330);
+select *from user_exercise;
+
+INSERT INTO user_kcal (userid, date, food_name, calories,classify) VALUES ('kim01', '2025-05-02', '김치',30,'아침');
+
 CREATE TABLE UserRank (
                       userid VARCHAR(50) PRIMARY KEY,
                       score INT NOT NULL DEFAULT 0,
                       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                       FOREIGN KEY (userid) REFERENCES user(userid)
 );
-<<<<<<< HEAD
-연습왜 커밋 안됨
-=======
->>>>>>> branch 'main' of https://github.com/AiSamdasu/Spring_health.git
-g해결되었나?
+
