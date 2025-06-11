@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class FoodController {
@@ -20,12 +22,14 @@ public class FoodController {
     }
 
     // AJAX 요청을 받아 DB에서 음식 검색 결과를 반환
+    
     @GetMapping("/searchFood")
     @ResponseBody
     public List<Food> searchFood(@RequestParam("keyword") String keyword) {
         FoodRepository repo = new FoodRepository();
         return repo.searchFoodByName(keyword);
     }
+    
 
     @PostMapping("/submitFoodSelection")
     @ResponseBody
@@ -44,6 +48,7 @@ public class FoodController {
         caloriesList.add(calories);
         session.setAttribute("selectedCaloriesList", caloriesList);
 
+
         return "선택 완료";
     }
 
@@ -52,6 +57,8 @@ public class FoodController {
         FoodRepository repo = new FoodRepository();
         Food food = repo.findFoodByName(foodName);
         model.addAttribute("food", food);
-        return "SearchFood/showFood";  // Show.jsp
+        return "SearchFood/showFood";  // Show.jsp //SearchFood/showFood
     }
+    
+    
 }

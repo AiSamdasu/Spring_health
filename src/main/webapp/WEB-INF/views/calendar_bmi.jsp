@@ -165,15 +165,7 @@
 	  
       <div class="modal-body">
 		<form action="calendar_bmi" method="post">
-		  
-			<!--
-			<div class="row mb-3">
-		    <label for="userid" class="col-sm-2 col-form-label">userid</label>
-		    <div class="col-sm-10">
-		      <input type="text" class="form-control" name="userid" id="userid" value="${sessionScope.loginMember.userid}" required>
-		    </div>
-		  </div>
-		  -->
+		 
 		  <div class="row mb-3">
 		    <label for="height" class="col-sm-2 col-form-label">height_cm</label>
 		    <div class="col-sm-10">
@@ -189,7 +181,7 @@
 		  </div>
 
 		  <input type="hidden" class="form-control" name="userid" id="userid">
-		      <input type="hidden" class="form-control" name="date" id="date">
+		   <input type="hidden" class="form-control" name="date" id="date">
 
 		  <div class="modal-footer">
 		    <button type="submit" class="btn btn-primary">저장</button>
