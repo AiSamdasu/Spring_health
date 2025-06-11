@@ -19,30 +19,30 @@ import java.util.Scanner;
 public class RankController {
 
     private final RankRepository rankRepo = new RankRepository();
+    /*
 
+        @Autowired
+        private ExerciseRepository exerciseRepository;
 
-    @Autowired
-    private ExerciseRepository exerciseRepository;
+        @PostMapping("/insertExercise")
+        public String insertExercise(@ModelAttribute Exercise exercise, HttpSession session) {
+            User user = (User) session.getAttribute("loginUser");
+            if (user == null) return "redirect:/login";
 
-    @PostMapping("/insertExercise")
-    public String insertExercise(@ModelAttribute Exercise exercise, HttpSession session) {
-        User user = (User) session.getAttribute("loginUser");
-        if (user == null) return "redirect:/login";
+            // 유저 정보 설정
+            exercise.setUserid(user.getUserid());
 
-        // 유저 정보 설정
-        exercise.setUserid(user.getUserid());
+            // 1. 운동 저장
+            exerciseRepository.insert(exercise);
 
-        // 1. 운동 저장
-        exerciseRepository.insert(exercise);
+            // 2. 총 칼로리 계산 후 랭킹 갱신
+            int totalCalories = exerciseRepository.getTotalCaloriesByUser(user.getUserid());
+            rankRepo.saveOrUpdateRank(user.getUserid(), totalCalories);
 
-        // 2. 총 칼로리 계산 후 랭킹 갱신
-        int totalCalories = exerciseRepository.getTotalCaloriesByUser(user.getUserid());
-        rankRepo.saveOrUpdateRank(user.getUserid(), totalCalories);
+            return "redirect:/exerciseList";  // 적절한 페이지로 리다이렉트
+        }
 
-        return "redirect:/exerciseList";  // 적절한 페이지로 리다이렉트
-    }
-
-
+    */
     // 랭킹 보기
     @GetMapping("/rank")
     public String showRank(Model model) {
