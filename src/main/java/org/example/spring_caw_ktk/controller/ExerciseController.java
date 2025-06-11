@@ -26,7 +26,7 @@ public class ExerciseController {
 
 	@Autowired
 	 private ExerciseService ExerciseService;
-	
+
 	@RequestMapping("/calendar_exercise")
 	public String handleExercise(HttpSession session, Model model) {
 	    Member loginMember = (Member) session.getAttribute("loginMember");
@@ -40,8 +40,8 @@ public class ExerciseController {
 	        ExerciseRequest req = new ExerciseRequest();
 	        req.setUserid(userid);
 
-	        List<Exercise> exerciseList = ExerciseService.showExercise(req);  // 변수도 소문자
-	        model.addAttribute("exerciseList", exerciseList);  // 여기 수정
+	        List<Exercise> exerciseList = ExerciseService.showExercise(req);
+	        model.addAttribute("exerciseList", exerciseList);
 	        model.addAttribute("loginMember", loginMember);
 
 	        return "calendar_exercise";
@@ -52,10 +52,10 @@ public class ExerciseController {
 	}
 
 
-	
+
 	 @PostMapping("/calendar_exercise")
 	 public String handleExercisePost(HttpSession session,ExerciseRequest req,Model model) {
-		
+
 		 try {
 			 ExerciseService.saveExercise(req);
 		        // 로그인 사용자 정보
@@ -75,7 +75,7 @@ public class ExerciseController {
 			 return "test02_error";
 		 }
 	 }
-	 
+
 	 @GetMapping("/lis3")
 	 public String showExerciseHistory(HttpSession session, Model model) {
 		 // 세션에서 로그인된 사용자 가져오기
@@ -101,7 +101,7 @@ public class ExerciseController {
 		        return "test02_error";
 		    }
 	 }
-	 
+
 	// 탐색
     @GetMapping("/searchExercisePage")
     public String searchExercisePage(){return "SearchExercise/SearchExercise_Process";}
@@ -117,26 +117,26 @@ public class ExerciseController {
     @ResponseBody
     public String submitExerciseSelection(@ModelAttribute ExerciseRequest exerciseRequest,
             HttpSession session) {
-		
+
 		String exerciseName = exerciseRequest.getExercise_name();
 		Integer calories = exerciseRequest.getCalories();
-		
+
 		// null 체크
 		if (exerciseName == null || exerciseName.trim().isEmpty() || calories == null) {
 		return "운동 이름이나 칼로리가 유효하지 않습니다.";
 		}
-		
+
 		// 세션에 저장
 		List<String> exerciseNames = (List<String>) session.getAttribute("selectedExerciseNames");
 		if (exerciseNames == null) exerciseNames = new ArrayList<>();
 		exerciseNames.add(exerciseName);
 		session.setAttribute("selectedFoodNames", exerciseNames);
-		
+
 		List<Integer> caloriesList = (List<Integer>) session.getAttribute("selectedCaloriesList");
 		if (caloriesList == null) caloriesList = new ArrayList<>();
 		caloriesList.add(calories);
 		session.setAttribute("selectedCaloriesList", caloriesList);
-		
+
 		return "선택 완료";
 	}
 

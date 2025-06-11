@@ -2,6 +2,7 @@ package org.example.spring_caw_ktk.dao;
 
 import org.example.spring_caw_ktk.dto.Exercise;
 import org.example.spring_caw_ktk.util.DBUtil;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExerciseRepository {
+    private JdbcTemplate jdbcTemplate;
+
     public List<Exercise> searchExerciseByName(String keyword) {
         List<Exercise> list = new ArrayList<>();
         String sql = "SELECT * FROM exercise_list WHERE exercise_name LIKE ?";
@@ -33,5 +36,10 @@ public class ExerciseRepository {
         }
 
         return list;
+    }
+    // 사용자별 총 칼로리 합계 반환
+    public int getTotalCaloriesByUser(String userid) {
+        String sql = "SELECT COALESCE(SUM(calories), 0) FROM user_exercise WHERE userid = ?";
+        return jdbcTemplate.queryForObject(sql, Integer.class, userid);
     }
 }
