@@ -52,7 +52,7 @@ public class MainController {
 
         return "MainPage";
     }
-    @GetMapping("/infoPage")
+    @GetMapping({"/","/infoPage"})
     public String InfoPage(){
 
         return "infoPage";
