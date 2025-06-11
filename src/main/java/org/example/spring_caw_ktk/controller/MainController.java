@@ -52,4 +52,9 @@ public class MainController {
 
         return "MainPage";
     }
+    @GetMapping("/infoPage")
+    public String InfoPage(){
+
+        return "infoPage";
+    }
 }

@@ -1,0 +1,69 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: User
+  Date: 25. 6. 12.
+  Time: 오전 1:32
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>식단 관리 시스템</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS 링크 -->
+    <%@ include file="./bootstrap/bootstrap.jsp" %>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .center-box {
+            max-width: 500px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        .example-img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container center-box">
+    <div class="container center-box">
+        <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="${pageContext.request.contextPath}/images/ex1.png" class="d-block w-100" style="width: 600px; height: 500px;" alt="예시 이미지 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="${pageContext.request.contextPath}/images/ex2.png" class="d-block w-100" style="width: 600px; height: 500px;" alt="예시 이미지 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="${pageContext.request.contextPath}/images/ex3.png" class="d-block w-100" style="width: 600px; height: 500px;" alt="예시 이미지 3">
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">이전</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">다음</span>
+            </button>
+        </div>
+    <div class="d-grid gap-2">
+        <a href="/login.jsp" class="btn btn-primary btn-lg">로그인 하러가기</a>
+        <a href="/register.jsp" class="btn btn-success btn-lg">회원가입 하러가기</a>
+    </div>
+</div>
+
+<!-- Bootstrap JS (선택사항, 동작 필요 시 포함) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
