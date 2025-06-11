@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // 운동 리스트 출력 함수
+/*
 function displayExerciseList(data) {
     $('#resultList').empty();
 
@@ -54,6 +55,34 @@ function displayExerciseList(data) {
     });
 
     openResultModal();
+}*/
+
+function displayExerciseList(data) {
+    $('#resultList').empty();
+	
+
+    data.forEach(function (exercise) {
+        const button = $('<button type="button">')
+//            .addClass('food-btn list-group-item list-group-item-action')
+            .text(`${exercise.exercise_name} - ${exercise.calories} kcal`)
+            .click(function (event) {
+				console.log("선택된 운동 데이터:", exercise); 
+				//event.preventDefault(); 
+                // 1. 선택한 운동 정보를 hidden input에 저장
+				$('#selectedExerciseName').val(exercise.exercise_name);           // 올바른 방식
+				$('#selectedExerciseCalories').val(exercise.calories);       // 올바른 방식
+				
+                // 2. 모달 안에 텍스트로 표시
+                $('#selectedExerciseDisplay').html(`선택한 운동: <strong>${exercise.exercise_name}</strong> (${exercise.calories} kcal)`);
+
+                // 3. (선택) 검색결과 창 닫기
+                //closeResultModal(); // 모달이 열려있어야 할 경우 이 줄은 제거
+            });
+
+        $('#resultList').append($('<li>').append(button));
+    });
+
+    //openResultModal(); // 검색 결과 모달이 따로 있을 경우
 }
 
 // 전체 검색
@@ -78,7 +107,7 @@ $('#searchBtn').click(function () {
     console.log("검색 버튼 클릭됨");
     const keyword = $('#searchInput').val();
     if (!keyword){
-        alert("음식을 입력하거나,\n키워드를 입력하시오.");
+        alert("운동을 입력하거나,\n키워드를 입력하시오.");
 
         $('#searchInput').focus();
         return;

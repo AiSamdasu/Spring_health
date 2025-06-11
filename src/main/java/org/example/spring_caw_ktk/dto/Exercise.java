@@ -9,12 +9,12 @@ public class Exercise {
 	private String userid;
 	private Date date;
     private String exercise_name;
-    private int calories;
+    private Integer calories;
     private Timestamp created_at;
     
     public Exercise() {}
 
-    public Exercise(int id,String exercise_name,int calories) {
+    public Exercise(int id,String exercise_name,Integer calories) {
         this.id = id;
         this.userid = userid;
         this.date = date;
@@ -23,7 +23,7 @@ public class Exercise {
         this.created_at = created_at;
     }
     
-    public Exercise(int id, String userid, Date date , String exercise_name,int calories,Timestamp created_at) {
+    public Exercise(int id, String userid, Date date , String exercise_name,Integer calories,Timestamp created_at) {
         this.id = id;
         this.userid = userid;
         this.date = date;
@@ -64,11 +64,11 @@ public class Exercise {
 		this.exercise_name = exercise_name;
 	}
 
-	public int getCalories() {
+	public Integer getCalories() {
 		return calories;
 	}
 
-	public void setCalories(int calories) {
+	public void setCalories(Integer calories) {
 		this.calories = calories;
 	}
 

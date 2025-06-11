@@ -8,7 +8,7 @@ public class ExerciseRequest {
 	private String userid;
 	private Date date;
     private String exercise_name;
-    private int calories;
+    private Integer calories;
     private Timestamp created_at;
     
 
@@ -45,11 +45,11 @@ public class ExerciseRequest {
 		this.exercise_name = exercise_name;
 	}
 
-	public int getCalories() {
+	public Integer getCalories() {
 		return calories;
 	}
 
-	public void setCalories(int calories) {
+	public void setCalories(Integer calories) {
 		this.calories = calories;
 	}
 

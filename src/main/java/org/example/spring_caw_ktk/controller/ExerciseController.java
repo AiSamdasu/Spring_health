@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -114,23 +115,30 @@ public class ExerciseController {
 
     @PostMapping("/submitExerciseSelection")
     @ResponseBody
-    public String submitExerciseSelection(@RequestParam("exerciseName") String exerciseName,
-                                          @RequestParam("calories") int calories,
-                                          HttpSession session){
-        // 이름 목록
-        List<String> exerciseNames = (List<String>) session.getAttribute("selectedExerciseNames");
-        if (exerciseNames == null) exerciseNames = new ArrayList<>();
-        exerciseNames.add(exerciseName);
-        session.setAttribute("selectedExerciseNames", exerciseNames);
-
-        // 칼로리 목록
-        List<Integer> caloriesList = (List<Integer>) session.getAttribute("selectedExerciseCaloriesList");
-        if (caloriesList == null) caloriesList = new ArrayList<>();
-        caloriesList.add(calories);
-        session.setAttribute("selectedExerciseCaloriesList", caloriesList);
-
-        return "선택 완료";  // GET 요청으로 리다이렉트
-    }
+    public String submitExerciseSelection(@ModelAttribute ExerciseRequest exerciseRequest,
+            HttpSession session) {
+		
+		String exerciseName = exerciseRequest.getExercise_name();
+		Integer calories = exerciseRequest.getCalories();
+		
+		// null 체크
+		if (exerciseName == null || exerciseName.trim().isEmpty() || calories == null) {
+		return "운동 이름이나 칼로리가 유효하지 않습니다.";
+		}
+		
+		// 세션에 저장
+		List<String> exerciseNames = (List<String>) session.getAttribute("selectedExerciseNames");
+		if (exerciseNames == null) exerciseNames = new ArrayList<>();
+		exerciseNames.add(exerciseName);
+		session.setAttribute("selectedFoodNames", exerciseNames);
+		
+		List<Integer> caloriesList = (List<Integer>) session.getAttribute("selectedCaloriesList");
+		if (caloriesList == null) caloriesList = new ArrayList<>();
+		caloriesList.add(calories);
+		session.setAttribute("selectedCaloriesList", caloriesList);
+		
+		return "선택 완료";
+	}
 
 
 

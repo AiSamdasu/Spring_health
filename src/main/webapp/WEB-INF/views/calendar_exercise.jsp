@@ -142,7 +142,54 @@
 	  
 </html>
 
-<!-- 모달 -->
+<!-- 모달 새거쇼-->
+<!--모달 : 직접 입력하기-->
+<div class="modal fade" id="exampleModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">직접 입력하기</h1>
+		<!--
+		<button class="btn" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">선택 추가하기</button>-->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+	  <form action="calendar_exercise" method="post">
+      <div class="modal-body">
+
+
+
+		  
+		  <!-- 검색 입력 -->
+		  <div class="input-group mb-3">
+		    <input type="text" class="form-control" id="searchInput" placeholder="운동 이름 입력">
+		    <button type="button" class="btn btn-secondary" id="searchBtn">검색</button>
+		  </div>
+
+		  <!-- 결과 표시 -->
+		  <div id="resultList" class="list-group"></div>
+		  
+		  <!-- 선택 결과를 form에 반영 -->
+		  <!-- 선택된 음식 정보를 서버에 전달할 hidden input -->
+		  <input type="hidden" name="exercise_name" id="selectedExerciseName" value="">
+		  <input type="hidden" name="calories" id="selectedExerciseCalories" value="">
+
+		  
+		  <input type="hidden" class="form-control" name="date" id="date">
+		  <input type="hidden" class="form-control" name="userid" id="userid" value="${sessionScope.loginMember.userid}" required>
+		
+      </div>
+      <div class="modal-footer">
+		<p id="selectedExerciseDisplay"></p>
+		<button type="submit" class="btn btn-primary">저장</button>
+      </div>
+	  </form>
+    </div>
+  </div>
+</div>
+
+<script src="${pageContext.request.contextPath}/js/Exercise/SearchExercise.js"></script>
+
+<!-- 모달 이전모달
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -150,7 +197,7 @@
         <h1 class="modal-title fs-5" id="exampleModalLabel">기록하기</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-	  <!--모달 내용-->
+	  <!--모달 내용-
       <div class="modal-body">
 		<form action="calendar_exercise" method="post">
 			
@@ -161,7 +208,7 @@
 		      <input type="text" class="form-control" name="userid" id="userid" value="${sessionScope.loginMember.userid}" required>
 		    </div>
 		  </div>
-		  -->
+		  -
 		  <div class="row mb-3">
 		    <label for="exercise_name" class="col-sm-2 col-form-label">exercise_name</label>
 		    <div class="col-sm-10">
@@ -187,4 +234,4 @@
      
     </div>
   </div>
-</div>
+</div>-->
