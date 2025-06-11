@@ -2,6 +2,7 @@ package org.example.spring_caw_ktk.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import org.example.spring_caw_ktk.dto.Bmi;
 import org.example.spring_caw_ktk.dto.BmiRequest;
 import org.example.spring_caw_ktk.dto.Member;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
@@ -54,6 +56,27 @@ public class BmiDao {
         return results;
     }
 
+    public Bmi getTodayBmi(String userId) {
+        try {
+            return jdbcTemplate.queryForObject(
+                "SELECT * FROM user_bmi WHERE userid = ? AND DATE(date) = CURDATE()",
+                (rs, rowNum) -> new Bmi(
+                    rs.getInt("id"),
+                    rs.getString("userid"),
+                    rs.getFloat("height_cm"),
+                    rs.getFloat("weight_kg"),
+                    rs.getDate("date"),
+                    rs.getFloat("bmi"),
+                    rs.getTimestamp("created_at")
+                ),
+                userId
+            );
+        } catch (Exception e) {
+            return null; // 오늘 BMI 없으면 null 반환
+        }
+    }
+
+
     
 
     public void insert(Bmi bmi) {
@@ -80,4 +103,7 @@ public class BmiDao {
         	bmi.setId(key.intValue());
         }
     }
+    
+
+    
 }

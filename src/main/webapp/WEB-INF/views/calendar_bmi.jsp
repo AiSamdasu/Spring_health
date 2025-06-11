@@ -86,12 +86,22 @@
 		      <hr>
 		  	<h5>오늘의 bmi</h5>
 		  	<hr>
-		      <p>키 : 000000</p>
-		  	<p>몸무게: 000000</p>
-		  	<p> 적정 bmi : 000000</p>
+			<c:choose>
+			    <c:when test="${not empty todayBmi}">
+			        <p>오늘의 BMI: ${todayBmi.bmi}</p>
+			        <p>키: ${todayBmi.height} cm</p>
+			        <p>몸무게: ${todayBmi.weight} kg</p>
+			    </c:when>
+			    <c:otherwise>
+			        <p>오늘의 BMI 기록이 없습니다.</p>
+			    </c:otherwise>
+			</c:choose>
 		  	<hr>
 		  	<p> 잘 하고 있어요!
-		  	
+
+
+				
+				
 		    </div>
 
 		</div>

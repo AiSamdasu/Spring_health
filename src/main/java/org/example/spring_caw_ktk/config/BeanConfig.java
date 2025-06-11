@@ -14,7 +14,7 @@ public class BeanConfig {
 	 public DataSource dataSource() {
 	 DataSource ds = new DataSource();
 	 ds.setDriverClassName("com.mysql.jdbc.Driver");
-	 ds.setUrl("jdbc:mysql://localhost:3306/spring_univ_project_db");
+	 ds.setUrl("jdbc:mysql://localhost:3307/spring_univ_project_db");
 	 ds.setUsername("KTKCAW");
 	 ds.setPassword("1234");
 	 ds.setInitialSize(2);
