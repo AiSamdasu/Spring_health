@@ -37,30 +37,5 @@ public class FoodRepository {
         return list;
     }
 
-    // 검색 메서드
-    public Food findFoodByName(String foodName) {
-        String sql = "SELECT * FROM food_list WHERE food_name = ?";
-        try (
-                Connection conn = DBUtil.getConnection();
-                PreparedStatement ps = conn.prepareStatement(sql)
-        ) {
-            ps.setString(1, foodName);
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                return new Food(
-                        rs.getInt("id"),
-                        rs.getString("food_name"),
-                        rs.getInt("calories"),
-                        rs.getInt("carbohydrate"),
-                        rs.getInt("protein"),
-                        rs.getInt("fat")
-                );
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
 }

@@ -24,7 +24,6 @@ public class RankController {
     @Autowired
     private ExerciseRepository exerciseRepository;
 
-    // 운동 저장 시 점수 자동 반영
     @PostMapping("/insertExercise")
     public String insertExercise(@ModelAttribute Exercise exercise, HttpSession session) {
         User user = (User) session.getAttribute("loginUser");

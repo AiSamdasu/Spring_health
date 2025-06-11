@@ -58,6 +58,15 @@
                 <div class="carousel-item">
                     <img src="${pageContext.request.contextPath}/images/ex3.png" class="d-block w-100 example-img" alt="예시 이미지 3">
                 </div>
+                <div class="carousel-item active">
+                    <img src="${pageContext.request.contextPath}/images/ee1.png" class="d-block w-100 example-img"  alt="예시 이미지 4">
+                </div>
+                <div class="carousel-item">
+                    <img src="${pageContext.request.contextPath}/images/ee2.png" class="d-block w-100 example-img"  alt="예시 이미지 5">
+                </div>
+                <div class="carousel-item">
+                    <img src="${pageContext.request.contextPath}/images/ee3.png" class="d-block w-100 example-img" alt="예시 이미지 6">
+                </div>
             </div>
 
             <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">

@@ -15,7 +15,7 @@ import java.util.Map;
 
 @Controller
 public class FoodController {
-	
+
     // 음식 검색 페이지 반환
     @GetMapping("/searchFoodPage")
     public String searchFoodPage() {
@@ -23,14 +23,14 @@ public class FoodController {
     }
 
     // AJAX 요청을 받아 DB에서 음식 검색 결과를 반환
-    
+
     @GetMapping("/searchFood")
     @ResponseBody
     public List<Food> searchFood(@RequestParam("keyword") String keyword) {
         FoodRepository repo = new FoodRepository();
         return repo.searchFoodByName(keyword);
     }
-    
+
 
     @PostMapping("/submitFoodSelection")
     @ResponseBody
@@ -60,14 +60,5 @@ public class FoodController {
     }
 
 
-    @GetMapping("/showFoodDetail")
-    public String showFoodDetail(@RequestParam("foodName") String foodName, Model model) {
-        FoodRepository repo = new FoodRepository();
-        Food food = repo.findFoodByName(foodName);
-        model.addAttribute("food", food);
-        return "SearchFood/showFood";  // Show.jsp //SearchFood/showFood
-    }
-    
-    
-    
+
 }
