@@ -30,7 +30,8 @@ public class RankRepository {
     // 전체 랭크 리스트 (내림차순)
     public List<Rank> findAll() {
         List<Rank> list = new ArrayList<>();
-        String sql = "SELECT * FROM rank ORDER BY score DESC";
+        String sql = "SELECT * FROM UserRank ORDER BY score DESC";
+
 
         try (
                 Connection conn = DBUtil.getConnection();

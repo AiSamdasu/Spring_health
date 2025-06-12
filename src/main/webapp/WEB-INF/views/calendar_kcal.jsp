@@ -95,10 +95,24 @@
 			    <hr>
 				<h5>오늘의 섭취량</h5>
 				<hr>
-			    <p>칼로리 : 000000</p>
-				<p>탄수화물: 000000</p>
-				<p>단백질 : 000000</p>
-				<p>지방 : 000000</p>
+
+				<c:choose>
+				  <c:when test="${not empty todayKcalList}">
+				    <p>오늘 먹은 음식</p>
+				    <c:forEach var="kcal" items="${todayKcalList}">
+				      <p>- <c:out value="${kcal.food_name}" /></p>
+				    </c:forEach>
+
+				    <p>칼로리: 
+				      <c:out value="${totalCalories}" /> kcal
+				    </p>
+				  </c:when>
+				  <c:otherwise>
+				    <p>오늘의 식단 기록이 없습니다.</p>
+				  </c:otherwise>
+				</c:choose>
+
+				
 				<hr>
 				<p> 잘 하고 있어요!
 				

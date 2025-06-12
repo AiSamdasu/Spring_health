@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.example.spring_caw_ktk.dto.Bmi;
 import org.example.spring_caw_ktk.dto.BmiRequest;
+import org.example.spring_caw_ktk.dto.Exercise;
 import org.example.spring_caw_ktk.dto.Kcal;
 import org.example.spring_caw_ktk.dto.KcalRequest;
 import org.example.spring_caw_ktk.dto.Member;
@@ -34,7 +35,20 @@ public class KcalController {
 	        String userid = loginMember.getUserid();
 	        KcalRequest req = new KcalRequest();
 	        req.setUserid(userid);
-
+	        // 오늘의 칼로리 리스트 가져오기
+	        List<Kcal> todayKcalList = KcalService.showTodayKcal(req);
+	        
+	     // 소모 칼로리 총합 계산
+	        int totalCalories = 0;
+	        if (todayKcalList != null) {
+	            for (Kcal kcal : todayKcalList) {
+	                totalCalories += (kcal.getCalories() != null ? kcal.getCalories() : 0);
+	            }
+	        }
+	        
+	        model.addAttribute("todayKcalList",todayKcalList);
+	        model.addAttribute("totalCalories", totalCalories);
+	        
 	        List<Kcal> kcalList = KcalService.showKcal(req);
 	        model.addAttribute("kcalList", kcalList);
 	        model.addAttribute("loginMember", loginMember);
